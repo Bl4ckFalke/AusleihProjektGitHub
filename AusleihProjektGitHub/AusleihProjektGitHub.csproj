@@ -8,8 +8,5 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistenzen\" />
-  </ItemGroup>
 
 </Project>
