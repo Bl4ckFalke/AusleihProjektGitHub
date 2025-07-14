@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Persistenz\" />
+    <Folder Include="Persistenzen\" />
   </ItemGroup>
 
 </Project>
