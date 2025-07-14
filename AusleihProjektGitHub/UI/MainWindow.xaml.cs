@@ -35,4 +35,14 @@ public partial class MainWindow : Window
     {
 
     }
+
+    private void RadioButton_Checked(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void CheckBox_Checked(object sender, RoutedEventArgs e)
+    {
+
+    }
 }
