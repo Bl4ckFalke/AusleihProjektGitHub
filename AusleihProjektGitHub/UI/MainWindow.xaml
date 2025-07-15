@@ -10,7 +10,7 @@
 
     <Grid>
         <Button Content="Erstellen" HorizontalAlignment="Left" Margin="15,39,0,0" VerticalAlignment="Top" Click="bttn_erstellen" Width="145" Height="35" Background="#29353c" Foreground="White"/>
-        <Button Content="Verwalten" HorizontalAlignment="Left" Margin="15,116,0,0" VerticalAlignment="Top" Click="bttn_verwalten" Width="145" Height="35" Background="#29353c" Foreground="White"/>
+        <Button Content="Verwalten" HorizontalAlignment="Left" Margin="15,116,0,0" VerticalAlignment="Top" Click="bttn_verwalten" Width="145" Height="35" Background="#29353c" Foreground="White" IsEnabled="false"/>
         <Canvas HorizontalAlignment="Left" Height="391" Margin="180,0,0,14" VerticalAlignment="Bottom" Width="610" Background="#29353c"/>
         <Canvas HorizontalAlignment="Left" Height="385" Margin="175,0,0,0" VerticalAlignment="Center" Width="600" Background="#aac7d8" >
             <TextBox Canvas.Left="125" TextWrapping="Wrap" Text="Name eingeben" Canvas.Top="60" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" TextChanged="suche_Name"/>
