@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AusleihProjektGitHub.UI"
         mc:Ignorable="d"
-        Title="VerwaltungFenster" Height="450" Width="800">
+        Title="ErstellenFenster" Height="450" Width="800"
+        Background="#dfebf6">
     <Grid>
+        <Canvas HorizontalAlignment="Left" Height="221" VerticalAlignment="Top" Width="750" Background="#29353c" Margin="40,154,0,0"/>
+        <Canvas HorizontalAlignment="Center" Height="216" VerticalAlignment="Top" Width="750" Background="#aac7d8" Margin="0,145,0,0" />
+       
+        <Button Content="Speichern" HorizontalAlignment="Left" Margin="25,390,0,0" VerticalAlignment="Top" Click="bttn_erstellen" Width="145" Height="34" Background="#29353c" Foreground="White"/>
+        <Button Content="Abbrechen" HorizontalAlignment="Left" Margin="630,390,0,0" VerticalAlignment="Top" Click="bttn_abbrechen" Width="145" Height="35" Background="#29353c" Foreground="White"/>
+        <Button Content="Zurückgeben" HorizontalAlignment="Center" Margin="0,390,0,0" VerticalAlignment="Top" Click="bttn_erstellen" Width="144" Height="34" Background="#29353c" Foreground="White"/>
         
+        <Label Content="Ersteller:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="25,24,0,0" VerticalAlignment="Top" Height="30" Width="73" RenderTransformOrigin="-1.909,-0.865"/>
+        <Label Content="Start:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="24,64,0,0" VerticalAlignment="Top" Height="30" Width="74" RenderTransformOrigin="-1.909,-0.865"/>
+        <Label Content="Objekt:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="25,104,0,0" VerticalAlignment="Top" Height="30" Width="73" RenderTransformOrigin="-1.909,-0.865"/>
+
+        <TextBox TextWrapping="Wrap" Text="Ersteller" TextChanged="ersteller" Margin="120,29,560,385"/>
+        <TextBox TextWrapping="Wrap" Text="'Aktuelles Datum'" TextChanged="startdat" Margin="120,69,560,345"/>
+        <TextBox TextWrapping="Wrap" Text="Objekt Typ" TextChanged="objekt_tb" Margin="120,109,560,305"/>
+
+        <Label Content="Empfänger:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="320,24,0,0" VerticalAlignment="Top" Height="30" Width="80" RenderTransformOrigin="-1.909,-0.865"/>
+        <Label Content="Ende:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="319,64,0,0" VerticalAlignment="Top" Height="30" Width="74" RenderTransformOrigin="-1.909,-0.865"/>
+        <Label Content="Objekt-ID:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="320,104,0,0" VerticalAlignment="Top" Height="30" Width="73" RenderTransformOrigin="-1.909,-0.865"/>
+
+        <TextBox TextWrapping="Wrap" Text="Empfänger" TextChanged="empfaenger" Margin="415,29,265,385"/>
+        <TextBox TextWrapping="Wrap" Text="Enddatum" TextChanged="enddat" Margin="415,69,265,345"/>
+        <TextBox TextWrapping="Wrap" Text="Objekt-ID" TextChanged="obj_id" Margin="415,109,265,305"/>
+
+        <TextBox HorizontalAlignment="Center" Background="#aac7d8" Foreground="#29353c" Margin="0,154,0,0" TextWrapping="Wrap" Text="Hier Schadensbeschreibung (optional)&#xD;&#xA;&#xD;&#xA;Die oberen Textfelder sind auch alle gefüllt" VerticalAlignment="Top" Width="720" Height="195" TextChanged="TextBox_TextChanged"/>
+
+
     </Grid>
 </Window>
