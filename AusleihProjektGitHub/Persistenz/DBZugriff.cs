@@ -11,7 +11,7 @@ namespace AusleihProjektGitHub.Persistenzen
     {
         public static MySqlConnection OpenDB()
         {
-            String constr = "Server=bszw.ddns.net;Database=bfi2326a_csharp_wipauerj;Uid=bfi2326a;Pwd=geheim;";
+            String constr = "Server=bszw.ddns.net;Database=bfi2326a_JW_OO_NM_AP_AusleihProjekt;Uid=bfi2326a;Pwd=geheim;";
             MySqlConnection con = new MySqlConnection(constr);
             con.Open(); //öffnen der Verbindung
             return con;
