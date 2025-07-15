@@ -81,7 +81,31 @@ namespace AusleihProjektGitHub.Fachklassen
             }
         }
 
-        public AusleihSchein(int id, Person ersteller, Person empfaenger, Objekt objekt, string grund, DateTime erstellDatum)
+        private DateTime _startDatum;
+        public DateTime StartDatum
+        {
+            get
+            {
+                return _startDatum;
+            }
+            set
+            {
+                _startDatum = value;
+            }
+        }
+        private DateTime _endDatum;
+        public DateTime EndDatum
+        {
+            get
+            {
+                return _endDatum;
+            }
+            set
+            {
+                _endDatum = value;
+            }
+        }
+        public AusleihSchein(int id, Person ersteller, Person empfaenger, Objekt objekt, string grund, DateTime erstellDatum, DateTime startDatum, DateTime endDatum)
         {
             Id = id;
             Ersteller = ersteller;
@@ -89,6 +113,8 @@ namespace AusleihProjektGitHub.Fachklassen
             Objekt = objekt;
             Grund = grund;
             ErstellDatum = erstellDatum;
+            StartDatum = startDatum;
+            EndDatum = endDatum;
         }
         public AusleihSchein()
         { }
