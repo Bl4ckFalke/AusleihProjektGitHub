@@ -22,7 +22,7 @@
         <Label Foreground="#29353c" FontSize="14" Content="Suchen nach:" HorizontalAlignment="Left" Margin="190,41,0,0" VerticalAlignment="Top" Height="35" Width="100" FontWeight="Bold"/>
         <Label Foreground="#29353c" FontSize="14" Content="Name" HorizontalAlignment="Left" Margin="190,80,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
         <Label Foreground="#29353c" FontSize="14" Content="Objektart" HorizontalAlignment="Left" Margin="190,115,0,0" VerticalAlignment="Top" Height="33" Width="70"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="190,153,40,40" Background="#dfebf6" Foreground="#29353c"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="190,153,40,40" Background="#dfebf6" Foreground="#29353c" SelectionChanged="DataGrid_SelectionChanged"/>
         <Label Foreground="#29353c" FontSize="14" Content="Klasse" HorizontalAlignment="Left" Margin="540,80,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
         <Label Foreground="#29353c" FontSize="14" Content="Filtern nach:" HorizontalAlignment="Left" Margin="540,40,0,0" VerticalAlignment="Top" Height="35" Width="100" FontWeight="Bold"/>
 
