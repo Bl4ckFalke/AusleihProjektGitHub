@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <DataGrid x:Name="liste" AutoGenerateColumns="False" Margin="221,29,57,105">
+            <DataGrid.Columns >
+
+                <DataGridTextColumn Header="Ersteller" Binding="{Binding Ersteller.Nachname}"/>
+                <DataGridTextColumn Header="Empfänger" Binding="{Binding Empfaenger.Nachname}"/>
+                <DataGridTextColumn Header="Objekt" Binding="{Binding Objekt.ObjektName}"/>
+                <DataGridTextColumn Header="Grund" Binding="{Binding Grund}"/>
+                <DataGridTextColumn Header="ErstellDatum" Binding="{Binding ErstellDatum}"/>
+                <DataGridTextColumn Header="start" Binding="{Binding StartDatum}"/>
+                <DataGridTextColumn Header="Ende" Binding="{Binding EndDatum}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
 
     </Grid>
 </Window>
