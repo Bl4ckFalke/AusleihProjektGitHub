@@ -32,15 +32,6 @@ namespace AusleihProjektGitHub.Persistenzen
 
 
         }
-        public static MySqlDataReader ExecuteReader(string sql, MySqlConnection con)
-        {
-
-
-            MySqlCommand cmd = new MySqlCommand(sql, con);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            return rdr;
-
-        }
         public static int GetLastInsertId(MySqlConnection con)
         {
 
@@ -50,6 +41,15 @@ namespace AusleihProjektGitHub.Persistenzen
             int id = Convert.ToInt32(cmd.ExecuteScalar());
 
             return id;
+        }
+        public static MySqlDataReader ExecuteReader(string sql, MySqlConnection con)
+        {
+
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            return rdr;
+
         }
     }
 }

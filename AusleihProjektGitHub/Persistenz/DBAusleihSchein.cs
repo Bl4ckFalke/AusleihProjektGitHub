@@ -1,4 +1,5 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.Persistenzen;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,24 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<AusleihSchein> AlleLesen()
         {
-            //TODO: SQL-Abfrage zum Lesen aller Ausleihscheine
-            return new List<AusleihSchein>();
+
+            List<AusleihSchein> ausleihScheine = new List<AusleihSchein>();
+            using(MySqlConnection con = DBZugriff.OpenDB())
+            {
+                string sql = "SELECT * FROM AusleihSchein";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        AusleihSchein ausleihSchein = GetDataFromReader(rdr);
+                        ausleihScheine.Add(ausleihSchein);
+                    }
+                }
+            }
+            ausleihScheine = ausleihScheine.OrderBy(ausleihScheine => ausleihScheine.Id).ToList();
+
+            return ausleihScheine;
         }
         public static void Speichern(AusleihSchein ausleihSchein) 
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Persistenz;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -129,7 +130,7 @@ namespace AusleihProjektGitHub.Fachklassen
         public static List<AusleihSchein> AlleLesen()
         {
             // Logik zum Lesen aller Ausleihscheine aus der Datenbank oder einer Datei in der Persistenz Schicht
-            return new List<AusleihSchein>();
+            return DBAusleihSchein.AlleLesen();
         }
         public static AusleihSchein GetAusleihScheinById(int id)
         {
