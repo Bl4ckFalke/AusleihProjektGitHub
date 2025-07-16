@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Persistenz;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,20 +100,21 @@ namespace AusleihProjektGitHub.Fachklassen
         }
         public void Speichern()
         {
-            // TODO: Implementiere die Logik zum Speichern der Person in einer Datenbank oder Datei in der Persistenz Schicht
+            
+            DBPerson.Speichern(this);
         }
 
         public static List <Person> AlleLesen()
         {
-            // TODO: Implementiere die Logik zum Lesen aller Personen aus einer Datenbank oder Datei in der Persistenz Schicht
-            List<Person> personenListe = new List<Person>();
-            return personenListe;
+           
+           
+            return DBPerson.AlleLesen();
         }
 
         public static Person GetPersonById(int id)
         {
-            //TODO: Implementiere die Logik zum Abrufen einer Person anhand der ID aus einer Datenbank oder Datei in der Persistenz Schicht
-            return new Person();
+           
+            return DBPerson.GetPersonById(id);
         }
     }
 }

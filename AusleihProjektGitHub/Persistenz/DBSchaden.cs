@@ -1,4 +1,5 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.Persistenzen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,22 @@ namespace AusleihProjektGitHub.Persistenz
         public static List<Schaden> AlleLesen()
         {
             // TODO: SQL-Abfrage zum Lesen aller Schäden
+
+            List<Schaden> schadenListe = new List<Schaden>();
+            using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
+            {
+                string sql = "SELECT * FROM Schaden";
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, con);
+                using (MySql.Data.MySqlClient.MySqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        Schaden schaden = GetDataFromReader(rdr);
+                        schadenListe.Add(schaden);
+                    }
+                }
+            }
+            schadenListe = schadenListe.OrderBy(schaden => schaden.Id).ToList();
             return new List<Schaden>();
         }
 

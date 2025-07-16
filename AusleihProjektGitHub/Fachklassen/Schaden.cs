@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Persistenz;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,17 +77,15 @@ namespace AusleihProjektGitHub.Fachklassen
 
         public void Speichern()
         {
-            // Logik zum Speichern des Objekts in der Datenbank oder einer Datei in der Persistenz Schicht
+           DBSchaden.Speichern(this);
         }
         public List<Schaden> AlleLesen()
         {
-            // Logik zum Lesen aller Schäden aus der Datenbank oder einer Datei in der Persistenz Schicht
-            return new List<Schaden>();
+            return DBSchaden.AlleLesen();
         }
         public Schaden GetSchadenById(int id)
         {
-            // Logik zum Lesen eines bestimmten Schadens anhand der ID aus der Datenbank oder einer Datei in der Persistenz Schicht
-            return new Schaden();
+            return DBSchaden.GetSchadenById(id);
         }
     }
 }

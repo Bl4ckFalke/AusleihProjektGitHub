@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Persistenz;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,18 +77,19 @@ namespace AusleihProjektGitHub.Fachklassen
 
         public void Speichern()
         {
-            // Logik zum Speichern des Objekts in der Datenbank oder einer Datei in der Persistenz Schicht
+            
+            DBObjekt.Speichern(this);
 
         }
 
         public static List<Objekt> AlleLesen()
         {
-            // Logik zum Lesen aller Objekte aus der Datenbank oder einer Datei in der Persistenz Schicht
-            return new List<Objekt>();
+            
+            return DBObjekt.AlleLesen();
         }
         public static Objekt GetObjektById(int id)
-        {             // Logik zum Lesen eines Objekts anhand der ID aus der Datenbank oder einer Datei in der Persistenz Schicht
-            return new Objekt();
+        {             
+            return DBObjekt.GetObjektById(id);
         }
     }
 

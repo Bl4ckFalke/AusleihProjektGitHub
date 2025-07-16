@@ -118,24 +118,22 @@ namespace AusleihProjektGitHub.Fachklassen
             EndDatum = endDatum;
         }
         public AusleihSchein()
-        { }
+        {}
         public override string ToString()
         {
             return $"AusleihSchein ID: {Id}, Ersteller: {Ersteller.Vorname} {Ersteller.Nachname}, Empfänger: {Empfaenger.Vorname} {Empfaenger.Nachname}, Objekt: {Objekt.ObjektName}, Grund: {Grund}, ErstellDatum: {ErstellDatum.ToShortDateString()}";
         }
         public void Speichern()
         {
-            // Logik zum Speichern des Ausleihscheins in der Datenbank oder einer Datei in der Persistenz Schicht
+            DBAusleihSchein.Speichern(this);
         }
         public static List<AusleihSchein> AlleLesen()
         {
-            // Logik zum Lesen aller Ausleihscheine aus der Datenbank oder einer Datei in der Persistenz Schicht
             return DBAusleihSchein.AlleLesen();
         }
         public static AusleihSchein GetAusleihScheinById(int id)
         {
-            // Logik zum Lesen eines bestimmten Ausleihscheins anhand der ID aus der Datenbank oder einer Datei in der Persistenz Schicht
-            return new AusleihSchein();
+            return DBAusleihSchein.GetAusleihScheinById(id);
 
         }
     }
