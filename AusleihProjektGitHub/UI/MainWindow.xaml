@@ -37,8 +37,8 @@
 
         <Button Grid.Row="3" Grid.Column="2"
                 Content="Login" VerticalAlignment="Center" 
-                Height="40" FontSize="24" Margin="10" 
-                Click="Button_Click"/>
+                Height="40" FontSize="24" Margin="10,0,133,0" 
+                Click="Button_Click" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
