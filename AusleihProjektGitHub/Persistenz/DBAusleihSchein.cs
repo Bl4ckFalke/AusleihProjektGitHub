@@ -34,12 +34,29 @@ namespace AusleihProjektGitHub.Persistenz
         }
         public static void Speichern(AusleihSchein ausleihSchein) 
         {
-            //TODO: SQL-Abfrage zum Speichern eines Ausleihscheins
+            string sql = $"INSERT INTO AusleihSchein (AusleiherId, EmpfaengerId, ObjektId, StartDatum, EndDatum, Grund, ErstellDatum)" +
+                $" VALUES ('{ausleihSchein.Empfaenger.Id}', '{ausleihSchein.Empfaenger.Id}','{ausleihSchein.Objekt.Id}'," +
+                $" '{ausleihSchein.StartDatum.ToString("yyyy-MM-dd")}', '{ausleihSchein.EndDatum.ToString("yyyy-MM-dd")}'," +
+                $" '{ausleihSchein.Grund}', '{ausleihSchein.ErstellDatum.ToString("yyyy-MM-dd")}')";
+            DBZugriff.ExecuteNonQuery(sql);
+
         }
         public static AusleihSchein GetAusleihScheinById(int id)
         {
-            //TODO: SQL-Abfrage zum Lesen eines Ausleihscheins nach ID
-            return new AusleihSchein();
+            string zeile = "Select * FROM AusleihSchein WHERE Id = " + id;
+            using (MySqlConnection con = DBZugriff.OpenDB())
+            using (MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                AusleihSchein a;
+                if (rdr.Read())
+                {
+                    a = GetDataFromReader(rdr);
+                    return a;
+                }
+                else
+                    throw new Exception("Kein Ausleihschein mit dieser Id gefunden");
+            }
+            
         }
         private static AusleihSchein GetDataFromReader(MySqlDataReader rdr)
         {

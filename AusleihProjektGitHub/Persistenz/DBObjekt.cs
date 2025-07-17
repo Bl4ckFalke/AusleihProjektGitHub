@@ -35,13 +35,25 @@ namespace AusleihProjektGitHub.Persistenz
         }
         public static void  Speichern(Objekt objekt)
         {
-            // TODO: SQL-Abfrage zum Speichern eines Objekts
+            string sql = $"INSERT INTO Objekt (Id, Kategorie, Name) " +
+                $"VALUES ('{objekt.Id}', '{objekt.Kategorie}', '{objekt.ObjektName}')";
 
         }
         public static Objekt GetObjektById(int id)
         {
-            // TODO: SQL-Abfrage zum Lesen eines Objekts nach ID
-            return new Objekt();
+            string zeile = "SELECT * FROM Objekt WHERE Id = " + id;
+            using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
+            using (MySql.Data.MySqlClient.MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                Objekt objekt;
+                if (rdr.Read())
+                {
+                    objekt = GetDataFromReader(rdr);
+                    return objekt;
+                }
+                else
+                    throw new Exception("Kein Objekt mit dieser Id gefunden");
+            }
         }
 
         private static Objekt GetDataFromReader(MySql.Data.MySqlClient.MySqlDataReader rdr)

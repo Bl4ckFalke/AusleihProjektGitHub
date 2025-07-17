@@ -38,13 +38,26 @@ namespace AusleihProjektGitHub.Persistenz
 
         public static void Speichern(Person person)
         {
-            // TODO: SQL-Abfrage zum Speichern einer Person
+            string sql = $"INSERT INTO Person (Id, Rolle, Vorname, Nachname, Klasse) " +
+                $"VALUES ('{person.Id}', '{(int)person.Rolle}', '{person.Vorname}', '{person.Nachname}', '{person.Klasse}')";
+            DBZugriff.ExecuteNonQuery(sql);
         }
 
         public static Person GetPersonById(int id)
         {
-            // TODO: SQL-Abfrage zum Lesen einer Person nach ID
-            return new Person();
+            string zeile = "SELECT * FROM Person WHERE Id = " + id;
+            using (MySqlConnection con = DBZugriff.OpenDB())
+            using (MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                Person person;
+                if (rdr.Read())
+                {
+                    person = GetDataFromReader(rdr);
+                    return person;
+                }
+                else
+                    throw new Exception("Kein Person mit dieser Id gefunden");
+            }
         }
 
         private static Person GetDataFromReader(MySqlDataReader rdr)

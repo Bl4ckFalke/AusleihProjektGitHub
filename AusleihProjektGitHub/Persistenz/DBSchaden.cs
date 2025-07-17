@@ -34,13 +34,26 @@ namespace AusleihProjektGitHub.Persistenz
 
         public static void Speichern(Schaden schaden)
         {
-            // TODO: SQL-Abfrage zum Speichern eines Schadens
+            string sql =$"INSERT INTO Schaden (Id, FK_ObjektId, SchadenVorher, Schadenbes) " +
+                $"VALUES ('{schaden.Id}', '{schaden.Objekt.Id}', '{schaden.SchadenVorher}', '{schaden.Schadenbes}')";
         }
 
         public static Schaden GetSchadenById(int id)
         {
-            //TODO: SQL-Abfrage zum Lesen eines Schadens nach ID
-            return new Schaden();
+            string zeile = "SELECT * FROM Schaden WHERE Id = " + id;
+            using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
+            using (MySql.Data.MySqlClient.MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                Schaden schaden;
+                if (rdr.Read())
+                {
+                    schaden = GetDataFromReader(rdr);
+                    return schaden;
+                }
+                else
+                    throw new Exception("Kein Schaden mit dieser Id gefunden");
+            }
+
         }
         private static Schaden GetDataFromReader(MySql.Data.MySqlClient.MySqlDataReader rdr)
         {
