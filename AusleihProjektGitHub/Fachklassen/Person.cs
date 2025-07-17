@@ -153,7 +153,7 @@ namespace AusleihProjektGitHub.Fachklassen
 
         public static Person Login(Person p)
         {
-            return DBPerson.Login(p);
+            return DBPerson.Anmelden(p);
         }
     }
 }
