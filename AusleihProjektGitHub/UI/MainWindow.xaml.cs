@@ -22,4 +22,30 @@ public partial class MainWindow : Window
         InitializeComponent();
         
     }
+
+    private void bttn_erstellen(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void bttn_verwalten(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void suche_Name(object sender, TextChangedEventArgs e)
+    {
+
+    }
+
+    private void RadioButton_Checked(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void CheckBox_Checked(object sender, RoutedEventArgs e)
+    {
+
+    }
+
 }
