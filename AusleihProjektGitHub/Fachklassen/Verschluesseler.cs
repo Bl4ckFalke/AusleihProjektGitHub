@@ -8,5 +8,11 @@ namespace AusleihProjektGitHub.Fachklassen
 {
     class Verschluesseler
     {
+        public static string verschluesseln(string passwort)
+        {
+
+            //TODO: Verschüsseln mit HASH und random Salt
+            return passwort;
+        }
     }
 }
