@@ -77,7 +77,7 @@
                     HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="SpeichernButton" Content="Speichern" 
                     Width="120" Margin="10,0"
-                    Background="#29353c" Foreground="White" Click="bttn_erstellen"/>
+                    Background="#29353c" Foreground="White" Click="bttn_erstellen" Height="27"/>
             <Button x:Name="AbbrechenButton" Content="Abbrechen" 
                     Width="120" Margin="10,0"
                     Background="#29353c" Foreground="White" Click="bttn_abbrechen"/>
