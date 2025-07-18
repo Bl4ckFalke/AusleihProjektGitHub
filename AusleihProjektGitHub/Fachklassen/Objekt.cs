@@ -91,6 +91,10 @@ namespace AusleihProjektGitHub.Fachklassen
         {             
             return DBObjekt.GetObjektById(id);
         }
+        public static List<string> AlleObjektarten()
+        {
+            return DBObjekt.AlleObjektarten();
+        }
     }
 
 }

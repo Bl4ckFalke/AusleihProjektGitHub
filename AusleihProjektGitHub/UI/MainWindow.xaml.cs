@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Fachklassen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace AusleihProjektGitHub.UI
     {
         public MainWindow()
         {
-            InitializeComponent();
+            
         }
 
         private void UserLogin(object sender, TextChangedEventArgs e)
@@ -36,7 +37,7 @@ namespace AusleihProjektGitHub.UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }
