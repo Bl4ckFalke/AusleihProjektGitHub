@@ -13,7 +13,7 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<Person> AlleLesen()
         {
-            // TODO: SQL-Abfrage zum Lesen aller Personen
+            
 
             List<Person> liste = new List<Person>();
 

@@ -12,7 +12,7 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<Objekt> AlleLesen()
         {
-            // TODO: SQL-Abfrage zum Lesen aller Objekte
+           
 
             List<Objekt> objekte = new List<Objekt>();
             using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())

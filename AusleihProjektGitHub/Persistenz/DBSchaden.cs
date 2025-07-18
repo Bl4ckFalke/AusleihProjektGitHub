@@ -12,7 +12,7 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<Schaden> AlleLesen()
         {
-            // TODO: SQL-Abfrage zum Lesen aller Schäden
+            
 
             List<Schaden> schadenListe = new List<Schaden>();
             using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
