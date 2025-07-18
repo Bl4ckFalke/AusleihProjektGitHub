@@ -37,7 +37,9 @@ namespace AusleihProjektGitHub.UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            HauptFenster hauptFenster = new HauptFenster();
+            hauptFenster.Show();
+            this.Close();
         }
     }
 }
