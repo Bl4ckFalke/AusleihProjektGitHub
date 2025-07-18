@@ -60,6 +60,23 @@ namespace AusleihProjektGitHub.Persistenz
             }
         }
 
+        public static Person Anmelden(Person p)
+        {
+            string zeile = $"SELECT * FROM Person WHERE Username = '{p.Username}' AND Passwort = '{p.Passwort}'";
+            using (MySqlConnection con = DBZugriff.OpenDB())
+            using (MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                Person person;
+                if (rdr.Read())
+                {
+                    person = GetDataFromReader(rdr);
+                    return person;
+                }
+                else
+                    throw new Exception("Anmeldung fehlgeschlagen: Falscher Benutzername oder Passwort");
+            }
+        }
+
         private static Person GetDataFromReader(MySqlDataReader rdr)
         {
             //diese Methode ist dazu da die richtigen daten beim Lesen aus der Datenbank zu bekommen
@@ -71,5 +88,7 @@ namespace AusleihProjektGitHub.Persistenz
             person.Klasse = rdr.GetString("Klasse");
             return person;
         }
+
+        
     }
 }

@@ -83,6 +83,7 @@ namespace AusleihProjektGitHub.Fachklassen
         {
             return DBSchaden.AlleLesen();
         }
+        
         public Schaden GetSchadenById(int id)
         {
             return DBSchaden.GetSchadenById(id);

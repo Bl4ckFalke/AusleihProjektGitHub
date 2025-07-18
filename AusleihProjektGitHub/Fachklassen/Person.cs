@@ -83,20 +83,54 @@ namespace AusleihProjektGitHub.Fachklassen
             }
         }
 
+        private string _username;
+        public string Username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                _username = value;
+            }
+        }
+        private string _passwort;
+        public string Passwort
+        {
+            get
+            {
+                return _passwort;
+            }
+            set
+            {
+                //TODO: Hier sollte eine Hash-Funktion für das Passwort verwendet werden und dazu // ein Salt, um die Sicherheit zu erhöhen.
+                _passwort = value;
+            }
+        }
+
+
 
         public Person(int id, string vorname, string nachname, string klasse)
         {
-            _id = id;
-            _vorname = vorname;
-            _nachname = nachname;
-            _klasse = klasse;
+            Id = id;
+            Vorname = vorname;
+            Nachname = nachname;
+            Klasse = klasse;
         }
+
+        public Person(string username, string password)
+        {
+            Username = username;
+            Passwort = password;
+        }
+
         public Person()
         { }
 
         public override string ToString()
         {
-            return $"{_vorname} {_nachname}, Klasse: {_klasse} (ID: {_id})";
+            return $"{Vorname} {Nachname}, Klasse: {Klasse} (ID: {Id})";
         }
         public void Speichern()
         {
@@ -115,6 +149,11 @@ namespace AusleihProjektGitHub.Fachklassen
         {
            
             return DBPerson.GetPersonById(id);
+        }
+
+        public static Person Login(Person p)
+        {
+            return DBPerson.Anmelden(p);
         }
     }
 }
