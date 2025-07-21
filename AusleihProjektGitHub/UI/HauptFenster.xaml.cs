@@ -27,10 +27,12 @@ public partial class HauptFenster : Window
         InitializeComponent();
          Person a = p;
         FillCbObjektart();
-        cbObjektart.SelectedIndex = 0; // Set default selection to "Alle"
+        cbObjektart.SelectedIndex = 0; // Selektiert "Alle" als Standardwert
         FillCbKlassen(a);
 
-        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+        _mvModel = FindResource("mwvm") as MainWindowViewModel;
+        
+
 
     }
 

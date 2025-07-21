@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Background="#dfebf6"
-        MinWidth="650" MinHeight="400">
+        MinWidth="650" MinHeight="400"
+        DataContext="{StaticResource mwvm}">
+    
     <!-- Angepasste Mindestgrößen -->
 
     <Grid>
@@ -36,7 +38,7 @@
 
         <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" 
                 Background="#aac7d8" Margin="5,10,20,10" CornerRadius="0" Grid.ColumnSpan="2">
-            <Grid Margin="5" DataContext="{StaticResource mwvm}">
+            <Grid Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -88,17 +90,18 @@
                         </StackPanel>
                         <CheckBox Content="Selbst erstellte?" FontSize="14" 
                                   Margin="65,5,0,0" HorizontalAlignment="Left" 
-                                  VerticalAlignment="Center" Checked="CheckBox_Checked"/>
+                                  VerticalAlignment="Center" Checked="CheckBox_Checked" IsChecked="true"/>
                     </StackPanel>
                 </Grid>
 
-                <DataGrid x:Name="dgAusleihscheine" d:ItemsSource="{Binding LstSchein}" SelectedItem="{Binding SelectedSchein}" Background="#dfebf6" 
+                <DataGrid x:Name="dgAusleihscheine" ItemsSource="{Binding LstSchein}" SelectedItem="{Binding SelectedSchein}" Background="#dfebf6" 
                           Foreground="#29353c" AutoGenerateColumns="false" 
                           Margin="4,25,4,10" Grid.Row="2"
                           MinHeight="150">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Ersteller" Binding="{Binding Ersteller.Nachname}"/>
                         <DataGridTextColumn Header="Empfänger" Binding="{Binding Empfaenger.Nachname}"/>
+                        <DataGridTextColumn Header="Klasse" Binding="{Binding Empfaenger.Klasse}"/>
                         <DataGridTextColumn Header="Objekt" Binding="{Binding Objekt.ObjektName}"/>
                         <DataGridTextColumn Header="Gültig bis" Binding="{Binding EndDatum}"/>
                     </DataGrid.Columns>

@@ -1,4 +1,5 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,12 @@ namespace AusleihProjektGitHub.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel _mvModel;
+
         public MainWindow()
         {
+            InitializeComponent();
+            this._mvModel = FindResource("mwvm") as MainWindowViewModel;
             
         }
 
