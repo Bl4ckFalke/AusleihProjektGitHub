@@ -38,9 +38,20 @@ namespace AusleihProjektGitHub.UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HauptFenster hauptFenster = new HauptFenster();
-            hauptFenster.Show();
-            this.Close();
+            try
+            {
+                Person p = Person.Login(new Person(UserTextBox.Text, PasswordTextBox.Text));
+                HauptFenster hauptFenster = new HauptFenster(p);
+                this.Close();
+                hauptFenster.Show();
+            }
+            catch
+            (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler beim Anmelden ");
+            }
+            
+            
         }
     }
 }

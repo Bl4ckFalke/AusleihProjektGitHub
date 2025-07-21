@@ -1,4 +1,7 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.UI;
+using AusleihProjektGitHub.ViewModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,17 +20,24 @@ namespace AusleihProjektGitHub;
 /// </summary>
 public partial class HauptFenster : Window
 {
-    public HauptFenster()
+    private MainWindowViewModel _mvModel;
+    
+    public HauptFenster(Person p)
     {
         InitializeComponent();
+         Person a = p;
         FillCbObjektart();
         cbObjektart.SelectedIndex = 0; // Set default selection to "Alle"
-        FillCbKlassen();
-        cbKlassen.SelectedIndex = 0; // Set default selection to "Alle"
+        FillCbKlassen(a);
+
+        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+
     }
 
     private void bttn_erstellen(object sender, RoutedEventArgs e)
     {
+        ErstellenFenster erstellenFenster = new ErstellenFenster();
+        erstellenFenster.ShowDialog();
 
     }
 
@@ -62,13 +72,20 @@ public partial class HauptFenster : Window
         }
     }
 
-    private void FillCbKlassen()
+    private void FillCbKlassen(Person a)
     {
         cbKlassen.Items.Clear();
-        cbKlassen.Items.Add("Alle"); // Add "Alle" as the first item
+        cbKlassen.Items.Add("Alle");// Alle wird als erste Option hinzugefügt
         foreach (string klasse in Person.AlleKlassen())
         {
             cbKlassen.Items.Add(klasse);
+
+        }
+        if (a.Klasse != null)
+        {
+            cbKlassen.SelectedItem = a.Klasse; // falls der user eine Klasse hat, wird diese vorausgewählt
         }
     }
+
+    
 }

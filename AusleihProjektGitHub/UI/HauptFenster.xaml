@@ -36,7 +36,7 @@
 
         <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" 
                 Background="#aac7d8" Margin="5,10,20,10" CornerRadius="0" Grid.ColumnSpan="2">
-            <Grid Margin="5">
+            <Grid Margin="5" DataContext="{StaticResource mwvm}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -69,7 +69,7 @@
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <Label Content="Objektart:" FontSize="14" Foreground="#29353c" 
                                    Width="70" VerticalAlignment="Center"/>
-                            <ComboBox Text="Objektart eingeben" Width="120" Height="20" 
+                            <ComboBox x:Name="cbObjektart" Text="Objektart eingeben" Width="120" Height="20" 
                                       Margin="10,0" HorizontalAlignment="Left"
                                       MinWidth="100"/>
                             <!-- Mindestbreite für ComboBox -->
@@ -81,7 +81,7 @@
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <Label Content="Klasse:" FontSize="14" Foreground="#29353c" 
                                    Width="55" VerticalAlignment="Center"/>
-                            <ComboBox Width="120" Height="20" 
+                            <ComboBox x:Name="cbKlassen" Width="120" Height="20" 
                                      Margin="10,0" HorizontalAlignment="Left"
                                      MinWidth="100"/>
                             <!-- Mindestbreite für ComboBox -->
@@ -92,10 +92,17 @@
                     </StackPanel>
                 </Grid>
 
-                <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Background="#dfebf6" 
-                          Foreground="#29353c" AutoGenerateColumns="True" 
+                <DataGrid x:Name="dgAusleihscheine" d:ItemsSource="{Binding LstSchein}" SelectedItem="{Binding SelectedSchein}" Background="#dfebf6" 
+                          Foreground="#29353c" AutoGenerateColumns="false" 
                           Margin="4,25,4,10" Grid.Row="2"
-                          MinHeight="150"/>
+                          MinHeight="150">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ersteller" Binding="{Binding Ersteller.Nachname}"/>
+                        <DataGridTextColumn Header="Empfänger" Binding="{Binding Empfaenger.Nachname}"/>
+                        <DataGridTextColumn Header="Objekt" Binding="{Binding Objekt.ObjektName}"/>
+                        <DataGridTextColumn Header="Gültig bis" Binding="{Binding EndDatum}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <!-- Mindesthöhe für DataGrid -->
             </Grid>
         </Border>

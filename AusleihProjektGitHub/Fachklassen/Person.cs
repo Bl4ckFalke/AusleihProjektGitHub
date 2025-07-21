@@ -15,7 +15,7 @@ namespace AusleihProjektGitHub.Fachklassen
         Empfaenger
     }
 
-    class Person
+    public class Person
     {
         private int _id;
         public int Id

@@ -1,9 +1,9 @@
 ﻿<Application x:Class="AusleihProjektGitHub.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AusleihProjektGitHub"
+             xmlns:vm="clr-namespace:AusleihProjektGitHub.ViewModel"
              StartupUri="UI/MainWindow.xaml">
     <Application.Resources>
-         
+        <vm:MainWindowViewModel x:Key="mwvm"/>
     </Application.Resources>
 </Application>

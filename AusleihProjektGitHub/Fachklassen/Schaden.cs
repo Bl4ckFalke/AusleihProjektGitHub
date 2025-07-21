@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AusleihProjektGitHub.Fachklassen
 {
-    class Schaden
+    public class Schaden
     {
         private int _id;
         public int Id
