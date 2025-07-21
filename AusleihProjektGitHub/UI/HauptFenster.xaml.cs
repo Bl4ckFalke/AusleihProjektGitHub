@@ -30,7 +30,7 @@ public partial class HauptFenster : Window
         cbObjektart.SelectedIndex = 0; // Selektiert "Alle" als Standardwert
         FillCbKlassen(a);
 
-        _mvModel = FindResource("mwvm") as MainWindowViewModel;
+        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
         
 
 
@@ -52,17 +52,6 @@ public partial class HauptFenster : Window
     {
 
     }
-
-    private void RadioButton_Checked(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private void CheckBox_Checked(object sender, RoutedEventArgs e)
-    {
-
-    }
-
 
     private void FillCbObjektart()
     {
@@ -89,5 +78,13 @@ public partial class HauptFenster : Window
         }
     }
 
-    
+    private void CbSelbstChecked(object sender, RoutedEventArgs e)
+    {
+        this._mvModel.CbSelbstErstellt = true;
+    }
+
+    private void CbSelbstUnchecked(object sender, RoutedEventArgs e)
+    {
+        this._mvModel.CbSelbstErstellt = false;
+    }
 }

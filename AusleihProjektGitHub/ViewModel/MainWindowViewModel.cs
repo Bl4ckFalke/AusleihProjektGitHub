@@ -37,10 +37,48 @@ namespace AusleihProjektGitHub.ViewModel
                 OnPropertyChanged("SelectedSchein");
             }
         }
+        private bool _cbSelbstErstellt;
+        public bool CbSelbstErstellt
+        {
+            get 
+            {
+                return _cbSelbstErstellt;
+            }
+            set
+            {
+                _cbSelbstErstellt = value;
+                OnPropertyChanged("CbSelbstErstellt");
+            }
+        }
+        private Person _user;
+
+        public Person User
+        {
+            get
+            {
+                return _user;
+            }
+            set
+            {
+                _user = value;
+                OnPropertyChanged("User");
+            }
+        }
 
         public MainWindowViewModel()
         {
-            this.LstSchein = new ObservableCollection<AusleihSchein>(AusleihSchein.AlleLesen());
+            string filter = "";
+            if (CbSelbstErstellt) 
+            {
+                
+                filter = $"ErstellerId = {User.Id}";
+            }
+            if(filter != "")
+            {
+                this.LstSchein = new ObservableCollection<AusleihSchein>(AusleihSchein.AlleLesen(filter));
+            }
+            else
+                this.LstSchein = new ObservableCollection<AusleihSchein>(AusleihSchein.AlleLesen());
             
         }
     }

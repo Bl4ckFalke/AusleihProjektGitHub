@@ -131,6 +131,10 @@ namespace AusleihProjektGitHub.Fachklassen
         {
             return DBAusleihSchein.AlleLesen();
         }
+        public static List<AusleihSchein> AlleLesen(string filter)
+        {
+            return DBAusleihSchein.AlleLesen(filter);
+        }
         public static AusleihSchein GetAusleihScheinById(int id)
         {
             return DBAusleihSchein.GetAusleihScheinById(id);

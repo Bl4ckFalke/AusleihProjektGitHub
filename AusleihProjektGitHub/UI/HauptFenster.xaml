@@ -88,9 +88,9 @@
                                      MinWidth="100"/>
                             <!-- Mindestbreite für ComboBox -->
                         </StackPanel>
-                        <CheckBox Content="Selbst erstellte?" FontSize="14" 
+                        <CheckBox x:Name="cbSelbst" Content="Selbst erstellte?" FontSize="14" 
                                   Margin="65,5,0,0" HorizontalAlignment="Left" 
-                                  VerticalAlignment="Center" Checked="CheckBox_Checked" IsChecked="true"/>
+                                  VerticalAlignment="Center" IsChecked="true" Checked="CbSelbstChecked" Unchecked="CbSelbstUnchecked" />
                     </StackPanel>
                 </Grid>
 
