@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Fachklassen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,23 +20,51 @@ namespace AusleihProjektGitHub.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        Person user = new Person();
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void UserLogin(object sender, TextChangedEventArgs e)
+
+        private bool PwdLogin(string password, string username)
         {
+            bool pwdRichtig = Verschluesseler.PasswortPruefen(password, user.Passwort);
+            
+            if(pwdRichtig == false)
+            {
+                return false;
+            }
 
+            return true;
         }
-
-        private void PwdLogin(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
+        //TODO: prüfen auf angelegter benutzer auf datenbank
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string password = "test123";
+            string username = "usertest";
+
+            user.Passwort = password;
+            user.Username = username;
+
+            bool anmeldung = PwdLogin(password, username);
+
+            if (anmeldung == false)
+            {
+                //hier wird alle ausgefüllte inhalte gelöscht und man bekommt eine messsagebox
+
+                MessageBox.Show("Anmelde Daten nicht richtig", "Fehler");
+            }
+            else
+            {
+                this.Close();
+                HauptFenster hf = new HauptFenster();
+                hf.Show();
+
+            }
+
+
+
 
         }
     }

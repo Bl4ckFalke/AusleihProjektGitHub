@@ -104,8 +104,7 @@ namespace AusleihProjektGitHub.Fachklassen
             }
             set
             {
-                //TODO: Hier sollte eine Hash-Funktion für das Passwort verwendet werden und dazu // ein Salt, um die Sicherheit zu erhöhen.
-                _passwort = value;
+                _passwort = Verschluesseler.verschluesseln(value);
             }
         }
 
@@ -122,7 +121,7 @@ namespace AusleihProjektGitHub.Fachklassen
         public Person(string username, string password)
         {
             Username = username;
-            Passwort = password;
+            Passwort = Verschluesseler.verschluesseln(password);
         }
 
         public Person()
