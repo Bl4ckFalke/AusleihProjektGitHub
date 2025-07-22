@@ -24,13 +24,15 @@ public partial class HauptFenster : Window
     
     public HauptFenster(Person p)
     {
+        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
         InitializeComponent();
-         Person a = p;
+        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+        Person a = p;
         FillCbObjektart();
         cbObjektart.SelectedIndex = 0; // Selektiert "Alle" als Standardwert
         FillCbKlassen(a);
 
-        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+        
         
 
 
@@ -70,7 +72,7 @@ public partial class HauptFenster : Window
         foreach (string klasse in Person.AlleKlassen())
         {
             cbKlassen.Items.Add(klasse);
-
+            cbKlassen.SelectedIndex = 0; // Setzt den Index auf 0, damit "Alle" vorausgewählt ist, wird überschrieben, falls der User eine Klasse hat
         }
         if (a.Klasse != null)
         {

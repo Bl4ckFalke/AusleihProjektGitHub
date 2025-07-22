@@ -47,6 +47,7 @@ namespace AusleihProjektGitHub.UI
             {
                 Person p = Person.Login(new Person(UserTextBox.Text, PasswordTextBox.Text));
                 HauptFenster hauptFenster = new HauptFenster(p);
+                _mvModel.User = p;
                 this.Close();
                 hauptFenster.Show();
             }

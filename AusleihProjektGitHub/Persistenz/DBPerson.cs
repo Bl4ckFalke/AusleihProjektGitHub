@@ -38,8 +38,8 @@ namespace AusleihProjektGitHub.Persistenz
 
         public static void Speichern(Person person)
         {
-            string sql = $"INSERT INTO Person (Id, Rolle, Vorname, Nachname, Klasse) " +
-                $"VALUES ('{person.Id}', '{(int)person.Rolle}', '{person.Vorname}', '{person.Nachname}', '{person.Klasse}')";
+            string sql = $"INSERT INTO Person (Rolle, Vorname, Nachname, Klasse) " +
+                $"VALUES ('{(int)person.Rolle}', '{person.Vorname}', '{person.Nachname}', '{person.Klasse}')";
             DBZugriff.ExecuteNonQuery(sql);
         }
 
@@ -105,7 +105,13 @@ namespace AusleihProjektGitHub.Persistenz
             person.Rolle = (Rolle)rdr.GetInt32("Rolle");
             person.Vorname = rdr.GetString("Vorname");
             person.Nachname = rdr.GetString("Nachname");
-            person.Klasse = rdr.GetString("Klasse");
+
+            if(rdr.GetOrdinal("Klasse") == null || rdr.IsDBNull(rdr.GetOrdinal("Klasse")))
+            {
+                person.Klasse = null; // Falls Klasse NULL ist, wird sie auf null gesetzt
+            }
+            else
+                person.Klasse = rdr.GetString("Klasse");
             return person;
         }
 

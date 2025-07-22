@@ -48,6 +48,7 @@ namespace AusleihProjektGitHub.ViewModel
             {
                 _cbSelbstErstellt = value;
                 OnPropertyChanged("CbSelbstErstellt");
+
             }
         }
         private Person _user;
@@ -62,6 +63,7 @@ namespace AusleihProjektGitHub.ViewModel
             {
                 _user = value;
                 OnPropertyChanged("User");
+                
             }
         }
 
