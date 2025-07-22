@@ -35,11 +35,10 @@ namespace AusleihProjektGitHub.Persistenz
 
             return liste;
         }
-
         public static void Speichern(Person person)
         {
-            string sql = $"INSERT INTO Person (Id, Rolle, Vorname, Nachname, Klasse) " +
-                $"VALUES ('{person.Id}', '{(int)person.Rolle}', '{person.Vorname}', '{person.Nachname}', '{person.Klasse}')";
+            string sql = $"INSERT INTO Person (Rolle, Vorname, Nachname, Klasse) " +
+                $"VALUES ('{(int)person.Rolle}', '{person.Vorname}', '{person.Nachname}', '{person.Klasse}' )";
             DBZugriff.ExecuteNonQuery(sql);
         }
 
@@ -60,21 +59,35 @@ namespace AusleihProjektGitHub.Persistenz
             }
         }
 
-        public static Person Anmelden(Person p)
+
+        public static Person Anmelden(string username, string passwortEingabe)
         {
-            string zeile = $"SELECT * FROM Person WHERE Username = '{p.Username}' AND Passwort = '{p.Passwort}'";
+            Person person = null;
+
+            string zeile = "SELECT * FROM Person WHERE Username = @username";
+
             using (MySqlConnection con = DBZugriff.OpenDB())
-            using (MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            using (MySqlCommand cmd = new MySqlCommand(zeile, con))
             {
-                Person person;
-                if (rdr.Read())
+                cmd.Parameters.AddWithValue("@username", username);
+                using (MySqlDataReader rdr = cmd.ExecuteReader())
                 {
-                    person = GetDataFromReader(rdr);
-                    return person;
+                    if (rdr.Read())
+                    {
+                        string gespeicherterHash = rdr.GetString("Passwort");
+
+                        // Überprüfe Passwort gegen gespeicherten Hash
+                        if (Verschluesseler.PasswortPruefen(passwortEingabe, gespeicherterHash))
+                        {
+                            person = GetDataFromReader(rdr);
+                            person.Username = username;
+                            person.Passwort = gespeicherterHash; 
+                        }
+                    }
                 }
-                else
-                    throw new Exception("Anmeldung fehlgeschlagen: Falscher Benutzername oder Passwort");
             }
+
+            return person;
         }
 
         private static Person GetDataFromReader(MySqlDataReader rdr)

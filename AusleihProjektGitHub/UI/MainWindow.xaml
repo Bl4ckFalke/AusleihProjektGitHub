@@ -10,8 +10,9 @@
     <Grid>
         <Label Foreground="#29353c" FontSize="48" HorizontalContentAlignment="Center" Content="Willkommen!" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" Height="80" Width="480" FontWeight="Bold"/>
 
-        <TextBox TextWrapping="Wrap" Text="User" TextChanged="UserLogin" Margin="240,204,240,190" RenderTransformOrigin="0.5,0.625" FontSize="24"/>
-        <TextBox TextWrapping="Wrap" Text="Password" TextChanged="PwdLogin" Margin="240,284,320,110" RenderTransformOrigin="0.5,0.625" FontSize="24"/>
+        <TextBox Text="User" Margin="240,204,240,190" FontSize="24"/>
+        <TextBox TextWrapping="Wrap" Text="Password" Margin="240,284,320,110" FontSize="24"/>
+
 
         <Button Content="Login" HorizontalAlignment="Left" Margin="480,284,0,0" VerticalAlignment="Top" Height="40" Width="80" FontSize="24" RenderTransformOrigin="0.5,0.876" Click="Button_Click"/>
 

@@ -1,4 +1,5 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.Persistenz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,45 +27,25 @@ namespace AusleihProjektGitHub.UI
             InitializeComponent();
         }
 
-
-        private bool PwdLogin(string password, string username)
-        {
-            bool pwdRichtig = Verschluesseler.PasswortPruefen(password, user.Passwort);
-            
-            if(pwdRichtig == false)
-            {
-                return false;
-            }
-
-            return true;
-        }
-        //TODO: prüfen auf angelegter benutzer auf datenbank
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string password = "test123";
-            string username = "usertest";
+            string password = pwd.Text; //platzhalter vor merge 
+            string username = usern.Text;
 
-            user.Passwort = password;
-            user.Username = username;
+            Person person = DBPerson.Anmelden(username, password);
 
-            bool anmeldung = PwdLogin(password, username);
-
-            if (anmeldung == false)
+            if (person == null)
             {
-                //hier wird alle ausgefüllte inhalte gelöscht und man bekommt eine messsagebox
-
-                MessageBox.Show("Anmelde Daten nicht richtig", "Fehler");
-            }
-            else
-            {
-                this.Close();
-                HauptFenster hf = new HauptFenster();
-                hf.Show();
-
+                MessageBox.Show("Anmelde-Daten nicht richtig", "Fehler");
+                pwd.Clear();
+                usern.Clear();
+                return;
             }
 
-
-
+            // Erfolgreich angemeldet
+            HauptFenster hf = new HauptFenster();
+            hf.Show();
+            this.Close();
 
         }
     }
