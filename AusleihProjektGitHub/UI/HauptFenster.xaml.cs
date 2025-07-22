@@ -20,7 +20,10 @@ public partial class HauptFenster : Window
     public HauptFenster()
     {
         InitializeComponent();
-        
+        FillCbObjektart();
+        cbObjektart.SelectedIndex = 0; // Set default selection to "Alle"
+        FillCbKlassen();
+        cbKlassen.SelectedIndex = 0; // Set default selection to "Alle"
     }
 
     private void bttn_erstellen(object sender, RoutedEventArgs e)
@@ -48,4 +51,24 @@ public partial class HauptFenster : Window
 
     }
 
+
+    private void FillCbObjektart()
+    {
+        cbObjektart.Items.Clear();
+        cbObjektart.Items.Add("Alle"); // Add "Alle" as the first item
+        foreach (string kategorie in Objekt.AlleObjektarten())
+        {
+            cbObjektart.Items.Add(kategorie);
+        }
+    }
+
+    private void FillCbKlassen()
+    {
+        cbKlassen.Items.Clear();
+        cbKlassen.Items.Add("Alle"); // Add "Alle" as the first item
+        foreach (string klasse in Person.AlleKlassen())
+        {
+            cbKlassen.Items.Add(klasse);
+        }
+    }
 }

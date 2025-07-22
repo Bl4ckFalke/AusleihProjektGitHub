@@ -5,16 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AusleihProjektGitHub.UI"
         mc:Ignorable="d"
-        Title="LoginFenster" Height="450" Width="800"
-        Background="#dfebf6">
+        Title="LoginFenster" 
+        Height="450" Width="800"
+        MinHeight="300" MinWidth="600"
+        Background="#dfebf6"
+        WindowStartupLocation="CenterScreen">
+
     <Grid>
-        <Label Foreground="#29353c" FontSize="48" HorizontalContentAlignment="Center" Content="Willkommen!" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" Height="80" Width="480" FontWeight="Bold"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <TextBox Text="User" Margin="240,204,240,190" FontSize="24"/>
-        <TextBox TextWrapping="Wrap" Text="Password" Margin="240,284,320,110" FontSize="24"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- Willkommen-Label -->
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+               Foreground="#29353c" FontSize="48" 
+               HorizontalContentAlignment="Center" Content="Willkommen!" 
+               VerticalAlignment="Center" FontWeight="Bold"
+               Margin="0,0,0,20"/>
 
-        <Button Content="Login" HorizontalAlignment="Left" Margin="480,284,0,0" VerticalAlignment="Top" Height="40" Width="80" FontSize="24" RenderTransformOrigin="0.5,0.876" Click="Button_Click"/>
+        <!-- User-TextBox -->
+        <TextBox x:Name="UserTextBox" 
+                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                 TextWrapping="Wrap" Text="User" 
+                 TextChanged="UserLogin" 
+                 FontSize="24" Margin="0,10" 
+                 MinWidth="300" Height="40"/>
 
+        <!-- Password-TextBox -->
+        <TextBox x:Name="PasswordTextBox" 
+                 Grid.Row="3" Grid.Column="1" 
+                 TextWrapping="Wrap" Text="Password" 
+                 TextChanged="PwdLogin" 
+                 FontSize="24" Margin="0,10" 
+                 MinWidth="300" Height="40"/>
+
+        <!-- Login-Button -->
+        <Button x:Name="LoginButton"
+                Grid.Row="3" Grid.Column="2"
+                Content="Login" VerticalAlignment="Center" 
+                Height="40" FontSize="24" Margin="10,10,0,10" 
+                Click="Button_Click" 
+                HorizontalAlignment="Stretch"
+                MinWidth="257"/>
     </Grid>
 </Window>

@@ -6,33 +6,96 @@
         xmlns:local="clr-namespace:AusleihProjektGitHub.UI"
         mc:Ignorable="d"
         Title="ErstellenFenster" Height="450" Width="800"
-        Background="#dfebf6">
+        Background="#dfebf6"
+        MinWidth="800" MinHeight="450"
+        WindowStartupLocation="CenterScreen">
+
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="221" VerticalAlignment="Top" Width="750" Background="#29353c" Margin="40,154,0,0"/>
-        <Canvas HorizontalAlignment="Center" Height="216" VerticalAlignment="Top" Width="750" Background="#aac7d8" Margin="0,145,0,0" />
-       
-        <Button Content="Speichern" HorizontalAlignment="Left" Margin="25,390,0,0" VerticalAlignment="Top" Click="bttn_erstellen" Width="145" Height="34" Background="#29353c" Foreground="White"/>
-        <Button Content="Abbrechen" HorizontalAlignment="Left" Margin="630,390,0,0" VerticalAlignment="Top" Click="bttn_abbrechen" Width="145" Height="35" Background="#29353c" Foreground="White"/>
-        <Button Content="Zurückgeben" HorizontalAlignment="Center" Margin="0,390,0,0" VerticalAlignment="Top" Click="bttn_erstellen" Width="144" Height="34" Background="#29353c" Foreground="White"/>
-        
-        <Label Content="Ersteller:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="25,24,0,0" VerticalAlignment="Top" Height="30" Width="73" RenderTransformOrigin="-1.909,-0.865"/>
-        <Label Content="Start:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="24,64,0,0" VerticalAlignment="Top" Height="30" Width="74" RenderTransformOrigin="-1.909,-0.865"/>
-        <Label Content="Objekt:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="25,104,0,0" VerticalAlignment="Top" Height="30" Width="73" RenderTransformOrigin="-1.909,-0.865"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <TextBox TextWrapping="Wrap" Text="Ersteller" TextChanged="ersteller" Margin="120,29,560,385"/>
-        <TextBox TextWrapping="Wrap" Text="'Aktuelles Datum'" TextChanged="startdat" Margin="120,69,560,345"/>
-        <TextBox TextWrapping="Wrap" Text="Objekt Typ" TextChanged="objekt_tb" Margin="120,109,560,305"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Label Content="Empfänger:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="320,24,0,0" VerticalAlignment="Top" Height="30" Width="80" RenderTransformOrigin="-1.909,-0.865"/>
-        <Label Content="Ende:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="319,64,0,0" VerticalAlignment="Top" Height="30" Width="74" RenderTransformOrigin="-1.909,-0.865"/>
-        <Label Content="Objekt-ID:" Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" Margin="320,104,0,0" VerticalAlignment="Top" Height="30" Width="73" RenderTransformOrigin="-1.909,-0.865"/>
+        <!-- Background elements -->
+        <Border Grid.Row="4" Grid.ColumnSpan="2" 
+                Background="#29353c" Margin="40,9,25,0" Height="229" VerticalAlignment="Top"/>
 
-        <TextBox TextWrapping="Wrap" Text="Empfänger" TextChanged="empfaenger" Margin="415,29,265,385"/>
-        <TextBox TextWrapping="Wrap" Text="Enddatum" TextChanged="enddat" Margin="415,69,265,345"/>
-        <TextBox TextWrapping="Wrap" Text="Objekt-ID" TextChanged="obj_id" Margin="415,109,265,305"/>
+        <Border Grid.Row="4" Grid.ColumnSpan="2" 
+                Background="#aac7d8" Margin="40,9,40,0" Height="216" VerticalAlignment="Top"/>
 
-        <TextBox HorizontalAlignment="Center" Background="#aac7d8" Foreground="#29353c" Margin="0,154,0,0" TextWrapping="Wrap" Text="Hier Schadensbeschreibung (optional)&#xD;&#xA;&#xD;&#xA;Die oberen Textfelder sind auch alle gefüllt" VerticalAlignment="Top" Width="720" Height="195" TextChanged="TextBox_TextChanged"/>
+        <!-- Left column controls -->
+        <Label Content="Ersteller:" Grid.Row="0" Grid.Column="0"
+               Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" 
+               Margin="25,5,0,0" VerticalAlignment="Top"/>
 
+        <TextBox Text="Ersteller" Grid.Row="0" Grid.Column="0"
+                 TextChanged="ersteller" Margin="120,5,25,5" HorizontalAlignment="Stretch"/>
 
+        <Label Content="Start:" Grid.Row="1" Grid.Column="0"
+               Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" 
+               Margin="25,5,0,0" VerticalAlignment="Top"/>
+
+        <TextBox Text="'Aktuelles Datum'" Grid.Row="1" Grid.Column="0"
+                 TextChanged="startdat" Margin="120,5,25,5" HorizontalAlignment="Stretch"/>
+
+        <Label Content="Objekt:" Grid.Row="2" Grid.Column="0"
+               Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" 
+               Margin="25,5,0,0" VerticalAlignment="Top"/>
+
+        <TextBox Text="Objekt Typ" Grid.Row="2" Grid.Column="0"
+                 TextChanged="objekt_tb" Margin="120,5,25,5" HorizontalAlignment="Stretch"/>
+
+        <!-- Right column controls -->
+        <Label Content="Empfänger:" Grid.Row="0" Grid.Column="1"
+               Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" 
+               Margin="25,5,0,0" VerticalAlignment="Top"/>
+
+        <TextBox Text="Empfänger" Grid.Row="0" Grid.Column="1"
+                 TextChanged="empfaenger" Margin="120,5,25,5" HorizontalAlignment="Stretch"/>
+
+        <Label Content="Ende:" Grid.Row="1" Grid.Column="1"
+               Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" 
+               Margin="25,5,0,0" VerticalAlignment="Top"/>
+
+        <TextBox Text="Enddatum" Grid.Row="1" Grid.Column="1"
+                 TextChanged="enddat" Margin="120,5,25,5" HorizontalAlignment="Stretch"/>
+
+        <Label Content="Objekt-ID:" Grid.Row="2" Grid.Column="1"
+               Foreground="#29353c" FontSize="14" HorizontalAlignment="Left" 
+               Margin="25,5,0,0" VerticalAlignment="Top"/>
+
+        <TextBox Text="Objekt-ID" Grid.Row="2" Grid.Column="1"
+                 TextChanged="obj_id" Margin="120,5,25,5" HorizontalAlignment="Stretch"/>
+
+        <!-- Description area -->
+        <TextBox Grid.Row="4" Grid.ColumnSpan="2" 
+                 Background="#aac7d8" Foreground="#29353c" Margin="40,9,40,0"
+                 TextWrapping="Wrap" Text="Hier Schadensbeschreibung (optional)&#xD;&#xA;&#xD;&#xA;Die oberen Textfelder sind auch alle gefüllt"
+                 VerticalAlignment="Top" Height="216" TextChanged="TextBox_TextChanged"/>
+
+        <!-- Buttons -->
+        <Button Content="Speichern" Grid.Row="5" Grid.Column="0"
+                HorizontalAlignment="Left" Margin="40,6,0,15" 
+                Click="bttn_erstellen" Width="145" Height="34" 
+                Background="#29353c" Foreground="White"/>
+
+        <Button Content="Zurückgeben" Grid.Row="5" Grid.Column="0"
+                HorizontalAlignment="Left" Margin="200,6,0,15" 
+                Click="bttn_erstellen" Width="144" Height="34" 
+                Background="#29353c" Foreground="White"/>
+
+        <Button Content="Abbrechen" Grid.Row="5" Grid.Column="1"
+                HorizontalAlignment="Right" Margin="0,6,25,14" 
+                Click="bttn_abbrechen" Width="145" Height="35" 
+                Background="#29353c" Foreground="White"/>
     </Grid>
 </Window>

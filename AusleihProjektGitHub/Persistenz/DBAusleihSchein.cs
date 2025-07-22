@@ -13,7 +13,7 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<AusleihSchein> AlleLesen()
         {
-
+            
             List<AusleihSchein> ausleihScheine = new List<AusleihSchein>();
             using(MySqlConnection con = DBZugriff.OpenDB())
             {

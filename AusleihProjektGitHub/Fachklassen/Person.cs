@@ -133,26 +133,30 @@ namespace AusleihProjektGitHub.Fachklassen
         }
         public void Speichern()
         {
-            
+
             DBPerson.Speichern(this);
         }
 
-        public static List <Person> AlleLesen()
+        public static List<Person> AlleLesen()
         {
-           
-           
+
+
             return DBPerson.AlleLesen();
         }
 
         public static Person GetPersonById(int id)
         {
-           
+
             return DBPerson.GetPersonById(id);
         }
 
         public static Person Login(Person p)
         {
             return DBPerson.Anmelden(p.Username, p.Passwort);
+        }
+        public static List<string> AlleKlassen()
+        {
+            return DBPerson.AlleKlassen();
         }
     }
 }

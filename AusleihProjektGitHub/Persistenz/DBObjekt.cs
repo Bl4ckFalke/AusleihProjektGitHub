@@ -12,7 +12,7 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<Objekt> AlleLesen()
         {
-            // TODO: SQL-Abfrage zum Lesen aller Objekte
+           
 
             List<Objekt> objekte = new List<Objekt>();
             using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
@@ -54,6 +54,23 @@ namespace AusleihProjektGitHub.Persistenz
                 else
                     throw new Exception("Kein Objekt mit dieser Id gefunden");
             }
+        }
+
+        public static List<string> AlleObjektarten()
+        {
+            string zeile = "SELECT DISTINCT Kategorie FROM Objekt";
+            using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
+            using (MySql.Data.MySqlClient.MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                List<string> kategorieListe = new List<string>();
+                while (rdr.Read())
+                {
+                    string kategorie = rdr.GetString("Kategorie");
+                    kategorieListe.Add(kategorie);
+                }
+                return kategorieListe;
+            }
+
         }
 
         private static Objekt GetDataFromReader(MySql.Data.MySqlClient.MySqlDataReader rdr)

@@ -13,7 +13,7 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<Person> AlleLesen()
         {
-            // TODO: SQL-Abfrage zum Lesen aller Personen
+            
 
             List<Person> liste = new List<Person>();
 
@@ -88,6 +88,26 @@ namespace AusleihProjektGitHub.Persistenz
             }
 
             return person;
+        }
+
+        public static List<string> AlleKlassen()
+        {
+            string zeile = "SELECT DISTINCT Klasse FROM Person";
+            List<string> klassen = new List<string>();
+            using (MySqlConnection con = DBZugriff.OpenDB())
+            using (MySqlDataReader rdr = DBZugriff.ExecuteReader(zeile, con))
+            {
+                while(rdr.Read())
+                {
+                    if (!rdr.IsDBNull(rdr.GetOrdinal("Klasse")))
+                    {
+                        string klasse = rdr.GetString("Klasse");
+
+                        klassen.Add(klasse);
+                    }
+                }
+                return klassen;
+            }
         }
 
         private static Person GetDataFromReader(MySqlDataReader rdr)
