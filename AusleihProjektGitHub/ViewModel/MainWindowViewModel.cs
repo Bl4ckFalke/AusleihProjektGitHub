@@ -27,6 +27,7 @@ namespace AusleihProjektGitHub.ViewModel
             set
             {
                 _selectedSchein = value;
+                IsAusleihscheinSelected = this._selectedSchein != null;
                 OnPropertyChanged(nameof(SelectedSchein));
             }
         }
@@ -57,6 +58,19 @@ namespace AusleihProjektGitHub.ViewModel
             }
         }
 
+        private bool _isAusleihscheinSelected;
+        public bool IsAusleihscheinSelected
+        {
+            get
+            {
+                return _isAusleihscheinSelected;
+            }
+            set
+            {
+                this._isAusleihscheinSelected = value;
+                OnPropertyChanged(nameof(IsAusleihscheinSelected));
+            }
+        }
         // Filter: ausgewählte Klasse
         private string _selectedKlasse;
         public string SelectedKlasse

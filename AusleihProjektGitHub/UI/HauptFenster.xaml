@@ -29,8 +29,8 @@
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="10,10,10,10">
             <Button Content="Erstellen" Margin="0,20,0,10" Click="bttn_erstellen" 
                     Height="35" Background="#29353c" Foreground="White"/>
-            <Button Content="Verwalten" Margin="0,10" Click="bttn_verwalten" 
-                    Height="35" Background="#29353c" Foreground="White" IsEnabled="false"/>
+            <Button Content="Verwalten" Margin="0,10" Click="bttn_verwalten" IsEnabled="{Binding IsAusleihscheinSelected}"
+                    Height="35" Background="#29353c" Foreground="White"/>
         </StackPanel>
 
         <Canvas Grid.Row="0" Grid.RowSpan="3" 
@@ -103,6 +103,7 @@
                           Margin="4,25,4,10" Grid.Row="2"
                           MinHeight="150">
                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Ersteller" Binding="{Binding Ersteller.Nachname}"/>
                         <DataGridTextColumn Header="Empfänger" Binding="{Binding Empfaenger.Nachname}"/>
                         <DataGridTextColumn Header="Klasse" Binding="{Binding Empfaenger.Klasse}"/>

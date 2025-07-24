@@ -42,7 +42,7 @@ public partial class HauptFenster : Window
 
     private void bttn_erstellen(object sender, RoutedEventArgs e)
     {
-        ErstellenFenster erstellenFenster = new ErstellenFenster(user);
+        ErstellenFenster erstellenFenster = new ErstellenFenster();
         erstellenFenster.ShowDialog();
 
     }

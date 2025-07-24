@@ -19,7 +19,7 @@ namespace AusleihProjektGitHub.Persistenz
 
             using (MySqlConnection con = DBZugriff.OpenDB())
             {
-                string sql = "SELECT * FROM AusleihSchein";
+                string sql = "SELECT Id, Rolle, Vorname, Nachname, Klasse FROM Person";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 using (MySqlDataReader rdr = cmd.ExecuteReader())
                 {

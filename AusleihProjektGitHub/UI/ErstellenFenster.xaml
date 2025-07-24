@@ -34,7 +34,7 @@
         <Label Content="Ersteller:" Grid.Row="0" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="ErstellerTextBox" Text="Ersteller" Grid.Row="0" Grid.Column="1"
-                Margin="5" TextChanged="ersteller"/>
+                Margin="5" />
 
         <Label Content="Start:" Grid.Row="1" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
@@ -44,13 +44,13 @@
         <Label Content="Objekt:" Grid.Row="2" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="ObjektTypTextBox" Text="Objekt Typ" Grid.Row="2" Grid.Column="1"
-                Margin="5" TextChanged="objekt_tb"/>
+                Margin="5" />
 
         <!-- Rechte Spalte -->
         <Label Content="Empfänger:" Grid.Row="0" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="EmpfaengerTextBox" Text="Empfänger" Grid.Row="0" Grid.Column="4"
-                Margin="5" TextChanged="empfaenger"/>
+                Margin="5" />
 
         <Label Content="Ende:" Grid.Row="1" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
@@ -60,7 +60,7 @@
         <Label Content="Objekt-ID:" Grid.Row="2" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="ObjektIdTextBox" Text="Objekt-ID" Grid.Row="2" Grid.Column="4"
-                Margin="5" TextChanged="obj_id"/>
+                Margin="5" />
 
         <!-- Schadensbeschreibung -->
         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" 
@@ -69,7 +69,7 @@
                     Text="Hier Schadensbeschreibung (optional)" 
                     Background="Transparent" Foreground="#29353c"
                     TextWrapping="Wrap" VerticalAlignment="Stretch"
-                    Margin="5" TextChanged="TextBox_TextChanged"/>
+                    Margin="5" />
         </Border>
 
         <!-- Buttons -->

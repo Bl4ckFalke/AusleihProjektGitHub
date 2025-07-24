@@ -32,49 +32,17 @@ namespace AusleihProjektGitHub.UI
 
         }
 
-        private void ersteller(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void startdat(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void objekt_tb(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void empfaenger(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void enddat(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void obj_id(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void bttn_erstellen(object sender, RoutedEventArgs e)
         {
+            
 
+            this.Close();
         }
 
         private void bttn_abbrechen(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
