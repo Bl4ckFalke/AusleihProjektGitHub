@@ -62,16 +62,19 @@
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <Label Content="Name:" FontSize="14" Foreground="#29353c" 
                                    Width="70" VerticalAlignment="Center"/>
-                            <TextBox TextWrapping="Wrap" Text="Name eingeben" 
-                                     Width="120" Height="20" Margin="10,0" 
-                                     TextChanged="suche_Name"
-                                     MinWidth="100"/>
+                            <TextBox x:Name="tbNameFilter"
+                                    TextWrapping="Wrap"
+                                    Text="{Binding NameFilter, UpdateSourceTrigger=PropertyChanged}"
+                                    Width="120" Height="20" Margin="10,0" 
+                                    MinWidth="100"/>
                             <!-- Mindestbreite für TextBox -->
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <Label Content="Objektart:" FontSize="14" Foreground="#29353c" 
                                    Width="70" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cbObjektart" Text="Objektart eingeben" Width="120" Height="20" 
+                            <ComboBox x:Name="cbObjektart"  ItemsSource="{Binding ObjektartenListe}"
+                                      SelectedItem="{Binding SelectedObjektart, Mode=TwoWay}"
+                                      Text="Objektart eingeben" Width="120" Height="20" 
                                       Margin="10,0" HorizontalAlignment="Left"
                                       MinWidth="100"/>
                             <!-- Mindestbreite für ComboBox -->
@@ -83,7 +86,8 @@
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <Label Content="Klasse:" FontSize="14" Foreground="#29353c" 
                                    Width="55" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="cbKlassen" Width="120" Height="20" 
+                            <ComboBox x:Name="cbKlassen" ItemsSource="{Binding KlassenListe}"
+                            SelectedItem="{Binding SelectedKlasse, Mode=TwoWay}" Width="120" Height="20" 
                                      Margin="10,0" HorizontalAlignment="Left"
                                      MinWidth="100"/>
                             <!-- Mindestbreite für ComboBox -->
@@ -103,7 +107,8 @@
                         <DataGridTextColumn Header="Empfänger" Binding="{Binding Empfaenger.Nachname}"/>
                         <DataGridTextColumn Header="Klasse" Binding="{Binding Empfaenger.Klasse}"/>
                         <DataGridTextColumn Header="Objekt" Binding="{Binding Objekt.ObjektName}"/>
-                        <DataGridTextColumn Header="Gültig bis" Binding="{Binding EndDatum}"/>
+                        <DataGridTextColumn Header="Objektart" Binding="{Binding Objekt.Kategorie}"/>
+                        <DataGridTextColumn Header="Gültig bis" Binding="{Binding EndDatum, StringFormat=\{0:dd.MM.yyyy\}}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <!-- Mindesthöhe für DataGrid -->

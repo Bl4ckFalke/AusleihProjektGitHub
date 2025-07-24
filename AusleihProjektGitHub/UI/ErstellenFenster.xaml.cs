@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,15 @@ namespace AusleihProjektGitHub.UI
     /// </summary>
     public partial class ErstellenFenster : Window
     {
+        private MainWindowViewModel _mvModel;
         public ErstellenFenster()
         {
             InitializeComponent();
+            this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+            ErstellerTextBox.Text = _mvModel.User.Nachname;
+            StartDatumDatePicker.Text = DateTime.Now.ToString("dd.MM.yyyy");
+
+
         }
 
         private void ersteller(object sender, TextChangedEventArgs e)

@@ -22,11 +22,13 @@ public partial class HauptFenster : Window
 {
     private MainWindowViewModel _mvModel;
     
+
     public HauptFenster(Person p)
     {
         this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+        this._mvModel.User = p; // Setzt den aktuellen Benutzer im ViewModel
         InitializeComponent();
-        this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+        
         Person a = p;
         FillCbObjektart();
         cbObjektart.SelectedIndex = 0; // Selektiert "Alle" als Standardwert
@@ -40,7 +42,7 @@ public partial class HauptFenster : Window
 
     private void bttn_erstellen(object sender, RoutedEventArgs e)
     {
-        ErstellenFenster erstellenFenster = new ErstellenFenster();
+        ErstellenFenster erstellenFenster = new ErstellenFenster(user);
         erstellenFenster.ShowDialog();
 
     }
@@ -56,18 +58,19 @@ public partial class HauptFenster : Window
     }
 
     private void FillCbObjektart()
-    {
+    {/*
         cbObjektart.Items.Clear();
         cbObjektart.Items.Add("Alle"); // Add "Alle" as the first item
         foreach (string kategorie in Objekt.AlleObjektarten())
         {
             cbObjektart.Items.Add(kategorie);
         }
+        */
     }
 
     private void FillCbKlassen(Person a)
     {
-        cbKlassen.Items.Clear();
+        /*cbKlassen.Items.Clear();
         cbKlassen.Items.Add("Alle");// Alle wird als erste Option hinzugefügt
         foreach (string klasse in Person.AlleKlassen())
         {
@@ -78,15 +81,19 @@ public partial class HauptFenster : Window
         {
             cbKlassen.SelectedItem = a.Klasse; // falls der user eine Klasse hat, wird diese vorausgewählt
         }
+        */
     }
 
     private void CbSelbstChecked(object sender, RoutedEventArgs e)
     {
+        
         this._mvModel.CbSelbstErstellt = true;
     }
 
     private void CbSelbstUnchecked(object sender, RoutedEventArgs e)
     {
+
+        
         this._mvModel.CbSelbstErstellt = false;
     }
 }

@@ -38,8 +38,8 @@
 
         <Label Content="Start:" Grid.Row="1" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
-        <TextBox x:Name="StartDatumTextBox" Text="Aktuelles Datum" Grid.Row="1" Grid.Column="1"
-                Margin="5" TextChanged="startdat"/>
+        <DatePicker x:Name="StartDatumDatePicker"  Grid.Row="1" Grid.Column="1"
+                Margin="5"/>
 
         <Label Content="Objekt:" Grid.Row="2" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
@@ -54,8 +54,8 @@
 
         <Label Content="Ende:" Grid.Row="1" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
-        <TextBox x:Name="EndDatumTextBox" Text="Enddatum" Grid.Row="1" Grid.Column="4"
-                Margin="5" TextChanged="enddat"/>
+        <DatePicker x:Name="EndDatumDatePicker" Text="Enddatum" Grid.Row="1" Grid.Column="4"
+                Margin="5" />
 
         <Label Content="Objekt-ID:" Grid.Row="2" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
