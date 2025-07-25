@@ -36,6 +36,28 @@ namespace AusleihProjektGitHub.Persistenz
             return liste;
         }
 
+        public static List<Person> AlleLesen(string filter)
+        {
+            List<Person> liste = new List<Person>();
+
+            using (MySqlConnection con = DBZugriff.OpenDB())
+            {
+                string sql = "SELECT Id, Rolle, Vorname, Nachname, Klasse FROM Person WHERE "+ filter;
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        Person person = GetDataFromReader(rdr);
+                        liste.Add(person);
+                    }
+                }
+            }
+            liste = liste.OrderBy(ausleihScheine => ausleihScheine.Id).ToList();
+
+
+            return liste;
+        }
         public static void Speichern(Person person)
         {
             string sql = $"INSERT INTO Person (Rolle, Vorname, Nachname, Klasse) " +

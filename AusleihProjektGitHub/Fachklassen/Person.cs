@@ -144,7 +144,11 @@ namespace AusleihProjektGitHub.Fachklassen
 
             return DBPerson.AlleLesen();
         }
-
+        public static List<Person> AlleLesen(string filter)
+        {
+            
+            return DBPerson.AlleLesen(filter);
+        }
         public static Person GetPersonById(int id)
         {
 

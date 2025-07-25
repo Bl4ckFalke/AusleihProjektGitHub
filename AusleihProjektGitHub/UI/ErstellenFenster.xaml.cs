@@ -27,7 +27,9 @@ namespace AusleihProjektGitHub.UI
             InitializeComponent();
             this._mvModel = FindResource("mwvm") as MainWindowViewModel;
             ErstellerTextBox.Text = _mvModel.User.Nachname;
+            _mvModel.LadeErstellFensterDaten();
             StartDatumDatePicker.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            pruefeObErstellenMoeglich();
 
 
         }
@@ -43,6 +45,32 @@ namespace AusleihProjektGitHub.UI
         private void bttn_abbrechen(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void EmpfaengerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            pruefeObErstellenMoeglich();
+
+        }
+        private void pruefeObErstellenMoeglich()
+        {
+
+            if (this._mvModel.ErstellFensterEmpfaengerSel == null)
+            {
+                SpeichernButton.IsEnabled = false;
+                return;
+            }
+            if (this._mvModel.ErstellFensterEmpfaengerSel.Id == 0)
+            {
+                SpeichernButton.IsEnabled = false;
+            }
+            else
+            {
+                SpeichernButton.IsEnabled = true;
+            }
+            
         }
     }
 }

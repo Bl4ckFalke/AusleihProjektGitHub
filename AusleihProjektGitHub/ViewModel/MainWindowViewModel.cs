@@ -109,6 +109,64 @@ namespace AusleihProjektGitHub.ViewModel
             }
         }
 
+        private ObservableCollection<Person> _erstellFensterEmpfaengerLst;
+        public ObservableCollection<Person> ErstellFensterEmpfaengerLst
+        {
+            get => _erstellFensterEmpfaengerLst;
+            set
+            {
+                _erstellFensterEmpfaengerLst = value;
+                OnPropertyChanged(nameof(ErstellFensterEmpfaengerLst));
+
+            }
+        }
+
+        private Person _erstellFensterEmpfaengerSel;
+        public Person ErstellFensterEmpfaengerSel
+        {
+            get => _erstellFensterEmpfaengerSel;
+            set
+            {
+                _erstellFensterEmpfaengerSel = value;
+                OnPropertyChanged(nameof(ErstellFensterEmpfaengerSel));
+                IsEmpaengerSelected = this._erstellFensterEmpfaengerSel != null;
+
+            }
+        }
+        private ObservableCollection<string> _erstellFensterKlasseLst;
+        public ObservableCollection<string> ErstellFensterKlasseLst
+        {
+            get => _erstellFensterKlasseLst;
+            set
+            {
+                _erstellFensterKlasseLst = value;
+                OnPropertyChanged(nameof(ErstellFensterKlasseLst));
+
+            }
+        }
+        private string _erstellFensterKlasseSel;
+        public string ErstellFensterKlasseSel
+        {
+            get => _erstellFensterKlasseSel;
+            set
+            {
+                _erstellFensterKlasseSel = value;
+                OnPropertyChanged(nameof(ErstellFensterKlasseSel));
+                LadeErstellFensterEmpfaenger(); // bei Änderung neu laden
+            }
+        }
+
+        private bool _isEmpaengerSelected;
+        public bool IsEmpaengerSelected
+        {
+            get => _isEmpaengerSelected;
+            set
+            {
+                _isEmpaengerSelected = value;
+                OnPropertyChanged(nameof(IsEmpaengerSelected));
+
+            }
+        }
 
         // ComboBox-Datenquellen
         public ObservableCollection<string> KlassenListe { get; set; }
@@ -150,5 +208,38 @@ namespace AusleihProjektGitHub.ViewModel
 
 
         }
+
+        public void LadeErstellFensterDaten()
+        {
+            ErstellFensterKlasseLst = new ObservableCollection<string>();
+            ErstellFensterKlasseLst.Clear();
+            ErstellFensterEmpfaengerLst = new ObservableCollection<Person>();
+            ErstellFensterEmpfaengerLst.Clear();
+            ErstellFensterEmpfaengerLst = new ObservableCollection<Person>(Person.AlleLesen(" Rolle = 3"));
+           
+
+            ErstellFensterKlasseLst = new ObservableCollection<string>(Person.AlleKlassen().Prepend("Alle"));
+            ErstellFensterKlasseSel = "Alle"; // Standardwert setzen
+
+
+        }
+        public void LadeErstellFensterEmpfaenger()
+        {
+            if (ErstellFensterKlasseSel == "Alle")
+            {
+                ErstellFensterEmpfaengerLst = new ObservableCollection<Person>(Person.AlleLesen(" Rolle = 3"));
+
+                if (ErstellFensterEmpfaengerLst.Count == 0)
+                {
+                    ErstellFensterEmpfaengerLst.Add(new Person(0, "Keine", "Keine", "Klasse"));
+                }
+            }
+            else
+            {
+                ErstellFensterEmpfaengerLst = new ObservableCollection<Person>(Person.AlleLesen($"Rolle = 3 AND Klasse = '{ErstellFensterKlasseSel}'"));
+            }
+        }
+
+        
     }
 }
