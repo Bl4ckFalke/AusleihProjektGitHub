@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,54 +21,56 @@ namespace AusleihProjektGitHub.UI
     /// </summary>
     public partial class ErstellenFenster : Window
     {
+        private MainWindowViewModel _mvModel;
         public ErstellenFenster()
         {
             InitializeComponent();
-        }
+            this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+            ErstellerTextBox.Text = _mvModel.User.Nachname;
+            _mvModel.LadeErstellFensterDaten();
+            StartDatumDatePicker.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            pruefeObErstellenMoeglich();
 
-        private void ersteller(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void startdat(object sender, TextChangedEventArgs e)
-        {
 
         }
 
-        private void objekt_tb(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void empfaenger(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void enddat(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void obj_id(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void bttn_erstellen(object sender, RoutedEventArgs e)
         {
+            
 
+            this.Close();
         }
 
         private void bttn_abbrechen(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void EmpfaengerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            pruefeObErstellenMoeglich();
+
+        }
+        private void pruefeObErstellenMoeglich()
+        {
+
+            if (this._mvModel.ErstellFensterEmpfaengerSel == null)
+            {
+                SpeichernButton.IsEnabled = false;
+                return;
+            }
+            if (this._mvModel.ErstellFensterEmpfaengerSel.Id == 0)
+            {
+                SpeichernButton.IsEnabled = false;
+            }
+            else
+            {
+                SpeichernButton.IsEnabled = true;
+            }
+            
         }
     }
 }

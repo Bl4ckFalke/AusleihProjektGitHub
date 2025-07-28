@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AusleihProjektGitHub.Fachklassen
 {
-    class AusleihSchein
+    public class AusleihSchein
     {
         private int _id;
         public int Id
@@ -130,6 +130,10 @@ namespace AusleihProjektGitHub.Fachklassen
         public static List<AusleihSchein> AlleLesen()
         {
             return DBAusleihSchein.AlleLesen();
+        }
+        public static List<AusleihSchein> AlleLesen(string filter)
+        {
+            return DBAusleihSchein.AlleLesen(filter);
         }
         public static AusleihSchein GetAusleihScheinById(int id)
         {

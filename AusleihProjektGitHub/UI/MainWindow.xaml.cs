@@ -1,5 +1,5 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
-using AusleihProjektGitHub.Persistenz;
+using AusleihProjektGitHub.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,8 @@ namespace AusleihProjektGitHub.UI
         Person user = new Person();
         public MainWindow()
         {
+            InitializeComponent();
+            
             
         }
 

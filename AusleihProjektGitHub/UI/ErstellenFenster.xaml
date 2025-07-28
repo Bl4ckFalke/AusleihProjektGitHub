@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AusleihProjektGitHub.UI"
+        xmlns:viewmodel="clr-namespace:AusleihProjektGitHub.ViewModel"
         mc:Ignorable="d"
+        DataContext="{StaticResource mwvm}"
         Title="ErstellenFenster" Height="450" Width="800"
         Background="#dfebf6"
         MinWidth="800" MinHeight="450"
@@ -34,33 +36,34 @@
         <Label Content="Ersteller:" Grid.Row="0" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="ErstellerTextBox" Text="Ersteller" Grid.Row="0" Grid.Column="1"
-                Margin="5" TextChanged="ersteller"/>
+                Margin="5" />
 
         <Label Content="Start:" Grid.Row="1" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
-        <TextBox x:Name="StartDatumTextBox" Text="Aktuelles Datum" Grid.Row="1" Grid.Column="1"
-                Margin="5" TextChanged="startdat"/>
+        <DatePicker x:Name="StartDatumDatePicker"  Grid.Row="1" Grid.Column="1"
+                Margin="5"/>
 
         <Label Content="Objekt:" Grid.Row="2" Grid.Column="0"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="ObjektTypTextBox" Text="Objekt Typ" Grid.Row="2" Grid.Column="1"
-                Margin="5" TextChanged="objekt_tb"/>
+                Margin="5" />
 
         <!-- Rechte Spalte -->
         <Label Content="Empfänger:" Grid.Row="0" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
-        <TextBox x:Name="EmpfaengerTextBox" Text="Empfänger" Grid.Row="0" Grid.Column="4"
-                Margin="5" TextChanged="empfaenger"/>
-
+        <ComboBox x:Name="EmpfaengerComboBox" ItemsSource="{Binding ErstellFensterEmpfaengerLst}" DisplayMemberPath="Nachname" SelectedItem="{Binding ErstellFensterEmpfaengerSel.Nachname}"   Grid.Row="0" Grid.Column="4"
+                Margin="5,5,171,5" SelectionChanged="EmpfaengerComboBox_SelectionChanged" />
+        <ComboBox x:Name="KlasseComboBox" ItemsSource="{Binding ErstellFensterKlasseLst}" SelectedItem="{Binding ErstellFensterKlasseSel}"  Grid.Row="0" Grid.Column="4"
+                    Margin="155,5,10,5" />
         <Label Content="Ende:" Grid.Row="1" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
-        <TextBox x:Name="EndDatumTextBox" Text="Enddatum" Grid.Row="1" Grid.Column="4"
-                Margin="5" TextChanged="enddat"/>
+        <DatePicker x:Name="EndDatumDatePicker" Text="Enddatum" Grid.Row="1" Grid.Column="4"
+                Margin="5" />
 
         <Label Content="Objekt-ID:" Grid.Row="2" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <TextBox x:Name="ObjektIdTextBox" Text="Objekt-ID" Grid.Row="2" Grid.Column="4"
-                Margin="5" TextChanged="obj_id"/>
+                Margin="5" />
 
         <!-- Schadensbeschreibung -->
         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" 
@@ -69,18 +72,19 @@
                     Text="Hier Schadensbeschreibung (optional)" 
                     Background="Transparent" Foreground="#29353c"
                     TextWrapping="Wrap" VerticalAlignment="Stretch"
-                    Margin="5" TextChanged="TextBox_TextChanged"/>
+                    Margin="5" />
         </Border>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="6" Grid.ColumnSpan="5" Orientation="Horizontal" 
                     HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="SpeichernButton" Content="Speichern" 
+            <Button x:Name="SpeichernButton" IsEnabled="{Binding IsEmpaengerSelected}" Content="Speichern" 
                     Width="120" Margin="10,0"
                     Background="#29353c" Foreground="White" Click="bttn_erstellen" Height="27"/>
             <Button x:Name="AbbrechenButton" Content="Abbrechen" 
                     Width="120" Margin="10,0"
                     Background="#29353c" Foreground="White" Click="bttn_abbrechen"/>
         </StackPanel>
+        
     </Grid>
 </Window>

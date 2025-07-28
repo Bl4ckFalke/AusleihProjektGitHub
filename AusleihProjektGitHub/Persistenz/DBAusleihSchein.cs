@@ -32,6 +32,32 @@ namespace AusleihProjektGitHub.Persistenz
 
             return ausleihScheine;
         }
+        public static List<AusleihSchein> AlleLesen(string filter)   
+        {
+            // Diese Methode liest alle Ausleihscheine für eine bestimmte Person
+            List<AusleihSchein> ausleihScheine = new List<AusleihSchein>();
+            using (MySqlConnection con = DBZugriff.OpenDB())
+            {
+                string sql = "SELECT * FROM AusleihSchein " +
+                            "INNER JOIN Person AS Ausleiher ON AusleihSchein.AusleiherId = Ausleiher.Id " +
+                            "INNER JOIN Person AS Empfaenger ON AusleihSchein.EmpfaengerId = Empfaenger.Id " +
+                            "INNER JOIN Objekt ON AusleihSchein.ObjektId = Objekt.Id " +
+                            $"WHERE {filter}";
+
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        AusleihSchein ausleihSchein = GetDataFromReader(rdr);
+                        ausleihScheine.Add(ausleihSchein);
+                    }
+                }
+            }
+            ausleihScheine = ausleihScheine.OrderBy(ausleihScheine => ausleihScheine.Id).ToList();
+            return ausleihScheine;
+        }
         public static void Speichern(AusleihSchein ausleihSchein) 
         {
             string sql = $"INSERT INTO AusleihSchein (AusleiherId, EmpfaengerId, ObjektId, StartDatum, EndDatum, Grund, ErstellDatum)" +

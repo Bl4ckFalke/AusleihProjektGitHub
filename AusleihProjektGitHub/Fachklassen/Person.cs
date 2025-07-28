@@ -15,7 +15,7 @@ namespace AusleihProjektGitHub.Fachklassen
         Empfaenger
     }
 
-    class Person
+    public class Person
     {
         private int _id;
         public int Id
@@ -143,7 +143,11 @@ namespace AusleihProjektGitHub.Fachklassen
 
             return DBPerson.AlleLesen();
         }
-
+        public static List<Person> AlleLesen(string filter)
+        {
+            
+            return DBPerson.AlleLesen(filter);
+        }
         public static Person GetPersonById(int id)
         {
 
