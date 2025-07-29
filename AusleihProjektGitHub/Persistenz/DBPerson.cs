@@ -58,6 +58,7 @@ namespace AusleihProjektGitHub.Persistenz
 
             return liste;
         }
+
         public static void Speichern(Person person)
         {
             string sql = $"INSERT INTO Person (Rolle, Vorname, Nachname, Klasse) " +
