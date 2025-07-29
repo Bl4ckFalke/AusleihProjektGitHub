@@ -21,7 +21,7 @@ namespace AusleihProjektGitHub.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        Person user = new Person();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace AusleihProjektGitHub.UI
             string password = pwd.Text; //platzhalter vor merge 
             string username = usern.Text;
 
-            Person person = DBPerson.Anmelden(username, password);
+            Person person = Person.Login(username, password);
 
             if (person == null)
             {
@@ -45,11 +45,11 @@ namespace AusleihProjektGitHub.UI
             }
 
             // Erfolgreich angemeldet
-            HauptFenster hf = new HauptFenster();
+            HauptFenster hf = new HauptFenster(person);
             hf.Show();
             this.Close();
 
-            }
-        }
+         }
+        
     }
 }

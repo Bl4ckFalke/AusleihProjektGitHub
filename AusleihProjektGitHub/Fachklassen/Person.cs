@@ -154,9 +154,9 @@ namespace AusleihProjektGitHub.Fachklassen
             return DBPerson.GetPersonById(id);
         }
 
-        public static Person Login(Person p)
+        public static Person Login(string username, string passwort)
         {
-            return DBPerson.Anmelden(p.Username, p.Passwort);
+            return DBPerson.Anmelden(username, passwort);
         }
         public static List<string> AlleKlassen()
         {

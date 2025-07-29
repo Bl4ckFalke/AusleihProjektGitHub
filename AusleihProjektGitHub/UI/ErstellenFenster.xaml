@@ -54,7 +54,7 @@
         <ComboBox x:Name="EmpfaengerComboBox" ItemsSource="{Binding ErstellFensterEmpfaengerLst}" DisplayMemberPath="Nachname" SelectedItem="{Binding ErstellFensterEmpfaengerSel.Nachname}"   Grid.Row="0" Grid.Column="4"
                 Margin="5,5,171,5" SelectionChanged="EmpfaengerComboBox_SelectionChanged" />
         <ComboBox x:Name="KlasseComboBox" ItemsSource="{Binding ErstellFensterKlasseLst}" SelectedItem="{Binding ErstellFensterKlasseSel}"  Grid.Row="0" Grid.Column="4"
-                    Margin="155,5,10,5" />
+                    Margin="165,5,0,5" />
         <Label Content="Ende:" Grid.Row="1" Grid.Column="3"
                Foreground="#29353c" FontSize="14" VerticalAlignment="Center"/>
         <DatePicker x:Name="EndDatumDatePicker" Text="Enddatum" Grid.Row="1" Grid.Column="4"
