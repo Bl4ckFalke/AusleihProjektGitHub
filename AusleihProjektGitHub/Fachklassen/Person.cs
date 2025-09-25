@@ -148,6 +148,14 @@ namespace AusleihProjektGitHub.Fachklassen
             
             return DBPerson.AlleLesen(filter);
         }
+        public static List<Person> AlleLesen(string filter, string selectKlausel)
+        {
+            return DBPerson.AlleLesen(filter, selectKlausel);
+        }
+        public static List<string> AlleKlassen()
+        {
+            return DBPerson.AlleKlassen();
+        }
         public static Person GetPersonById(int id)
         {
 
@@ -158,9 +166,6 @@ namespace AusleihProjektGitHub.Fachklassen
         {
             return DBPerson.Anmelden(username, passwort);
         }
-        public static List<string> AlleKlassen()
-        {
-            return DBPerson.AlleKlassen();
-        }
+       
     }
 }

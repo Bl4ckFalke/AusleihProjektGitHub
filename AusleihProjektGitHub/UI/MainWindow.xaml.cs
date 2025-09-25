@@ -26,7 +26,7 @@ namespace AusleihProjektGitHub.UI
         {
             InitializeComponent();
 
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -44,23 +44,38 @@ namespace AusleihProjektGitHub.UI
                 return;
             }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+            HauptFenster hauptFenster = new HauptFenster(person);
+
+            this.Close();
+            hauptFenster.Show();
+        }
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.Key == Key.Enter)
             {
-                Person p = Person.Login(new Person(UserTextBox.Text, PasswordTextBox.Text));
-                HauptFenster hauptFenster = new HauptFenster(p);
-                
-                this.Close();
-                hauptFenster.Show();
+                LoginButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             }
-            catch
-            (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Fehler beim Anmelden ");
-            }
-            
             
         }
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Down)
+            {
+                if (usern.IsFocused)
+                {
+                    pwd.Focus();
+                }
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Up)
+            {
+                if (pwd.IsFocused)
+                {
+                    usern.Focus();
+                }
+                e.Handled = true;
+            }
+        }
+
     }
 }

@@ -179,7 +179,7 @@ namespace AusleihProjektGitHub.ViewModel
             // ComboBoxen vorbereiten
             KlassenListe = new ObservableCollection<string>(Person.AlleKlassen().Prepend("Alle"));
             ObjektartenListe = new ObservableCollection<string>(Objekt.AlleObjektarten().Prepend("Alle"));
-
+            
             // Standardfilter setzen
             SelectedKlasse = "Alle";
             SelectedObjektart = "Alle";
@@ -212,6 +212,7 @@ namespace AusleihProjektGitHub.ViewModel
         public void LadeErstellFensterDaten()
         {
             ErstellFensterKlasseLst = new ObservableCollection<string>();
+            
             ErstellFensterKlasseLst.Clear();
             ErstellFensterEmpfaengerLst = new ObservableCollection<Person>();
             ErstellFensterEmpfaengerLst.Clear();
@@ -219,6 +220,7 @@ namespace AusleihProjektGitHub.ViewModel
            
 
             ErstellFensterKlasseLst = new ObservableCollection<string>(Person.AlleKlassen().Prepend("Alle"));
+            ErstellFensterKlasseLst.Add("Klassen");
             ErstellFensterKlasseSel = "Alle"; // Standardwert setzen
 
 
@@ -232,6 +234,15 @@ namespace AusleihProjektGitHub.ViewModel
                 if (ErstellFensterEmpfaengerLst.Count == 0)
                 {
                     ErstellFensterEmpfaengerLst.Add(new Person(0, "Keine", "Keine", "Klasse"));
+                }
+            }
+            else if (ErstellFensterKlasseSel == "Klassen")
+            {
+                ErstellFensterEmpfaengerLst.Clear();
+                ObservableCollection<string> a = new ObservableCollection<string>(Person.AlleKlassen());
+                foreach(string i in a)
+                {
+                    ErstellFensterEmpfaengerLst.Add(new Person(0, i, i, i));
                 }
             }
             else

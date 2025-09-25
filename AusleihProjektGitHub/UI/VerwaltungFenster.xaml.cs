@@ -1,4 +1,6 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.Persistenz;
+using AusleihProjektGitHub.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +22,13 @@ namespace AusleihProjektGitHub.UI
     /// </summary>
     public partial class VerwaltungFenster : Window
     {
-        
+        private MainWindowViewModel _mvModel;
         public VerwaltungFenster()
         {
             InitializeComponent();
+            this._mvModel = FindResource("mwvm") as MainWindowViewModel;
+
+
         }
         
 
@@ -64,12 +69,13 @@ namespace AusleihProjektGitHub.UI
 
         private void bttn_erstellen(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Noch nicht implementiert", "Diese Methode Wird noch Implementiert");
+            this.Close();
         }
 
         private void bttn_abbrechen(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

@@ -12,14 +12,21 @@ namespace AusleihProjektGitHub.Persistenz
     {
         public static List<Objekt> AlleLesen()
         {
-           
-
             List<Objekt> objekte = new List<Objekt>();
-            using (MySql.Data.MySqlClient.MySqlConnection con = DBZugriff.OpenDB())
+
+            using (var con = DBZugriff.OpenDB())
             {
-                string sql = "SELECT * FROM Objekt";
-                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, con);
-                using (MySql.Data.MySqlClient.MySqlDataReader rdr = cmd.ExecuteReader())
+                string sql = @"SELECT 
+                          o.Id,
+                          o.Kategorie,
+                          o.Name,
+                          s.Id AS SchadenId
+                       FROM Objekt o
+                       LEFT JOIN Schaden s ON o.Id = s.FK_ObjektId
+                       ORDER BY o.Id";
+
+                using (var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, con))
+                using (var rdr = cmd.ExecuteReader())
                 {
                     while (rdr.Read())
                     {
@@ -28,8 +35,6 @@ namespace AusleihProjektGitHub.Persistenz
                     }
                 }
             }
-
-            objekte = objekte.OrderBy(objekt => objekt.Id).ToList();
 
             return objekte;
         }
@@ -76,11 +81,17 @@ namespace AusleihProjektGitHub.Persistenz
         private static Objekt GetDataFromReader(MySql.Data.MySqlClient.MySqlDataReader rdr)
         {
             //diese Methode ist dazu da die richtigen daten beim Lesen aus der Datenbank zu bekommen
-            Objekt objekt = new Objekt();
-            objekt.Id = rdr.GetInt32("Id");
-            objekt.Kategorie = rdr.GetString("Kategorie");
-            objekt.ObjektName = rdr.GetString("Name");
- 
+            Objekt objekt = new Objekt
+            {
+                Id = rdr.GetInt32("Id"),
+                Kategorie = rdr.GetString("Kategorie"),
+                ObjektName = rdr.GetString("Name"),
+                Schaden = !rdr.IsDBNull(rdr.GetOrdinal("Id"))
+                  ? new Schaden { Id = rdr.GetInt32("Id") }
+                  : null
+            };
+
+            
             return objekt;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using AusleihProjektGitHub.Fachklassen;
+using AusleihProjektGitHub.Persistenz;
 using AusleihProjektGitHub.UI;
 using AusleihProjektGitHub.ViewModel;
 using System.Security.Cryptography.X509Certificates;
@@ -49,7 +50,9 @@ public partial class HauptFenster : Window
 
     private void bttn_verwalten(object sender, RoutedEventArgs e)
     {
-
+        this._mvModel.SelectedSchein.Objekt.Schaden = DBSchaden.GetSchadenById(this._mvModel.SelectedSchein.Objekt.Schaden.Id);
+        VerwaltungFenster verwaltungFenster = new VerwaltungFenster();
+        verwaltungFenster.ShowDialog();
     }
 
     private void suche_Name(object sender, TextChangedEventArgs e)
